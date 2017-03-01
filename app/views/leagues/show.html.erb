@@ -1,1 +1,14 @@
 <h1><%= @league.league_name %></h1>
+<% if current_user %>
+	<%= link_to "Go to dashboard", league_dashboard_path(@league) %>
+<% end %>
+<hr>
+
+<ul>
+<% @ballots.each do |ballot|%>
+	<li><%= link_to ballot.player.screen_name, [ballot.league, ballot] %></li>
+<% end %>
+<% if !current_user %>
+	<li><%= link_to "New Ballot", league_new_ballot_path(@league) %></li>
+<% end %>
+</ul>

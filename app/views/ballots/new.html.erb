@@ -1,0 +1,51 @@
+<h1>New Ballot</h1>
+<%= link_to "Back", league_path(@league) %>
+
+<% if current_user %>
+	<%= form_for @ballot, url: {action: "create"} do | form | %>
+
+		<p>Your pick for best picture:</p>
+		<%= form.text_field :best_picture %>
+
+		<p>For best actress:</p>
+		<%= form.text_field :best_actress %>
+		
+		<p>And, finally, best actor:</p>
+		<%= form.text_field :best_actor %>
+
+		<br>
+		<%= form.submit 'Submit' %>
+	<% end %>
+<% else %>
+	<%= form_for @player, url: {action: "create"} do | form | %>
+		<p>Welcome to the Fantasy Oscars app, you're going to make a new ballot and join <%= @league.league_name %> . Go ahead and enter...</p>
+
+		<p>Your first name...</p>
+		<%= form.text_field :first_name %>
+
+		<p>Your last name...</p>
+		<%= form.text_field :last_name %>
+
+		<p>A screen name (this'll identify you most often, it must be under 11 characters)...</p>
+		<%= form.text_field :screen_name %>
+
+		<p>Your email...</p>
+		<%= form.text_field :email %>
+
+		<%= form.fields_for :ballot do | build | %>
+
+			<p>Your pick for best picture...</p>
+			<%= build.text_field :best_picture %>
+
+			<p>For best actress...</p>
+			<%= build.text_field :best_actress %>
+			
+			<p>And, finally, best actor...</p>
+			<%= build.text_field :best_actor %>
+
+		<% end %>
+		<br>
+		<%= form.submit 'Submit' %>
+	<% end %>
+
+<% end %>

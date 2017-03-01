@@ -2,6 +2,7 @@ class Player < ApplicationRecord
 
   has_one :ballot, dependent: :destroy
   has_one :commissioner, dependent: :destroy
+  accepts_nested_attributes_for :ballot, allow_destroy: true
   accepts_nested_attributes_for :commissioner, allow_destroy: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="<%= body_class %>">
@@ -20,14 +19,16 @@
 	    <% end %>
 
 	    <%= yield %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   	</div>
 
     <div style="color:#c4c7ba;background-color:#27292c;padding:10px 20px;width:100%;font-family:'courier',monospace;font-size:14px;">
       	<% if current_user %>
-      		<%= "Logged in as #{current_user.email}" %>
+      		<%= "Logged in as #{@current_user.email}" %>
+      		<%= link_to "Log Out", logout_path %>
+	   		 <br>
+	   		 <br>
    		 <% end %>
-   		 <br>
-   		 <br>
 	    <%= params.inspect %>
     </div>
 

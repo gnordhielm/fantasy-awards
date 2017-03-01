@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post '/',   to: 'sessions#create'
   post '/welcome',   to: 'sessions#create'
-  delete '/', to: 'sessions#destroy', as: :logout_path
+  get '/logout', to: 'sessions#destroy', as: :logout
 
   # sign up form for creating a new player and user model. 
   get  '/commissioner-signup', to: 'commissioners#new', as: :new_commissioner
@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   get  '/:league_id', to: 'leagues#show', as: :league
 
   get  '/dashboard/:league_id', to: 'leagues#dashboard', as: :league_dashboard
+
+  get  '/:league_id/new-ballot',  to: 'ballots#new', as: :league_new_ballot
+  post  '/:league_id/new-ballot', to: 'ballots#create'
+
+  get  '/:league_id/:ballot_id',  to: 'ballots#show', as: :league_ballot
+
+
+
 
   get   '/commissioners/:commissioner_id', to: "commissioners#show", as: 'commissioner'
   get   '/commissioners/edit/:commissioner_id', to: "commissioners#show"

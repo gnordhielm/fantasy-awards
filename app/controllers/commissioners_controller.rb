@@ -29,6 +29,8 @@ class CommissionersController < ApplicationController
       @commissioner.password_confirmation = player_params[:commissioner_attributes][:password_confirmation]
       @commissioner.player_id = @player.id
 
+      session[:player_id] = @player.id
+
       if @commissioner.save
         redirect_to new_league_path(@commissioner)
       else

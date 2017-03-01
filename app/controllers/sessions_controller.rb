@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
     if player && player.commissioner.authenticate(params[:login][:password])
       # password correct, start session
       session[:player_id] = player.id
-      redirect_to root_path, notice: 'Logged in.'
+      @player = Player.find(session[:player_id])
+      redirect_to league_dashboard_path(@player.commissioner.leagues.first), notice: 'Logged in.'
     else
       # password incorrect, re-render page
       redirect_to request.referrer, notice: 'Incorrect email or password.'
@@ -23,6 +24,7 @@ class SessionsController < ApplicationController
   def destroy
     # end a session, remove player id from cookie
     session.delete(:player_id)
+    @current_user = nil
     redirect_to root_path, notice: 'Logged out.'
   end
 

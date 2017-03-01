@@ -1,3 +1,16 @@
 <h1><%= @league.league_name %> Dashboard</h1>
+<%= link_to "Go to league view", league_path(@league) %>
 <hr>
-<h1>commissioner: <%= @commissioner.player.screen_name %></h1>
+
+<% if @commissioner.player.ballot %>
+	<p><%= link_to "Your Ballot", league_ballot_path(@league, @commissioner.player.ballot) %></p>
+<% else %>
+	<p><%= link_to "New Ballot", league_new_ballot_path(@league) %></p>
+<% end %>
+
+<h2>commissioner: <%= @commissioner.player.screen_name %></h2>
+<p>Your league's private link: <%= league_url @league %></p>
+
+<p>Send a message to your league</p>
+<p>Add another commissioner</p>
+<p>Merge two leagues</p>

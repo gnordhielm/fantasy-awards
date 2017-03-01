@@ -7,7 +7,7 @@ class LeaguesController < ApplicationController
   end
 
   def create
-    @commissioner = Commissioner.find(params[:commissioner_id])
+    @commissioner = Player.find(session[:player_id]).commissioner
     @league = League.new(league_params)
 
     if @league.save
@@ -22,11 +22,21 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:league_id])
+    @ballots = Ballot.where(league_id: params[:league_id])
   end
 
   def dashboard
-    @league = League.find(params[:league_id])
-    @commissioner = Player.find(session[:player_id]).commissioner
+    if current_user
+      @league = League.find(params[:league_id])
+      @commissioner = Player.find(session[:player_id]).commissioner
+    else
+      flash[:alert] = "You must be logged in to see that page."
+      redirect_to root_path
+    end
+  end
+
+  def index
+    @leagues = League.all
   end
 
 
