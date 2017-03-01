@@ -10,14 +10,6 @@
   </head>
 
   <body class="<%= body_class %>">
-  	 <% if current_user %>
-      <!-- current_user will return true if a user is logged in -->
-      <%= "Logged in as #{current_user.email}" %>
-    <% else %>
-      <!-- not logged in -->
-      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', root_path %>
-    <% end %>
-    <hr>
   	<div class="wrapper">
 	  	<% if notice %>
 	      <%= notice %>
@@ -31,6 +23,11 @@
   	</div>
 
     <div style="color:#c4c7ba;background-color:#27292c;padding:10px 20px;width:100%;font-family:'courier',monospace;font-size:14px;">
+      	<% if current_user %>
+      		<%= "Logged in as #{current_user.email}" %>
+   		 <% end %>
+   		 <br>
+   		 <br>
 	    <%= params.inspect %>
     </div>
 

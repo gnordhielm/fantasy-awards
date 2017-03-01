@@ -13,7 +13,7 @@ class LeaguesController < ApplicationController
     if @league.save
       # connect the commissioner to the league they've just created
       LeagueCommissioner.create({league_id: @league.id, commissioner_id: @commissioner.id})
-      redirect_to league_path(@league)
+      redirect_to league_dashboard_path(@league)
     else
       flash[:alert] = "Make sure your names aren't too long."
       redirect_to request.referrer

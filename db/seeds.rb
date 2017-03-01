@@ -7,10 +7,15 @@ players = Player.create([
   {screen_name: "theEmp", first_name: "Emperor", last_name:"Palpatine", email: "emperor@empire.gov"}
 ])
 
-# leagues = League.create([
-#   {league_name: "The Resistance", award_name: "The Exhaust Port" },
-#   {league_name: "The Empire", award_name: "Golden Death Star" }
-# ])
+leagues = League.create([
+  {league_name: "The Resistance", award_name: "The Exhaust Port" },
+  {league_name: "The Empire", award_name: "Golden Death Star" }
+])
+
+league_commissioners = LeagueCommissioner.create([
+  {commissioner_id: 1, league_id: 1},
+  {commissioner_id: 4, league_id: 2}
+])
 
 # ballots = Ballot.create([
 #   {player_id: Player.find_by(screen_name: 'lilVader').id, league_id: League.find_by(league_name: 'The Resistance').id, 
