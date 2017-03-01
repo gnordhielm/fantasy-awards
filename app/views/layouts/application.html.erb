@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FantasyOscars</title>
+  <%= favicon_link_tag 'favicon.png' %>
+    <title><%= title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="<%= body_class %>">
+  	 <% if current_user %>
+      <!-- current_user will return true if a user is logged in -->
+      <%= "Logged in as #{current_user.email}" %>
+    <% else %>
+      <!-- not logged in -->
+      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', root_path %>
+    <% end %>
+    <hr>
+  	<div class="wrapper">
+	  	<% if notice %>
+	      <%= notice %>
+	    <% end %>
+
+	    <% if alert %>
+	      <%= alert %>
+	    <% end %>
+
+	    <%= yield %>
+  	</div>
+
+    <div style="color:#c4c7ba;background-color:#27292c;padding:10px 20px;width:100%;font-family:'courier',monospace;font-size:14px;">
+	    <%= params.inspect %>
+    </div>
+
   </body>
 </html>

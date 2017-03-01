@@ -1,0 +1,32 @@
+
+<h1>Register as a Commissioner</h1>
+
+<p>A league must have a commissioner. As a commissioner, you'll have all kinds of administrative power (woohoo!), so please provide...</p>
+
+<%= form_for @player, url: {action: "create"} do | form | %>
+
+	<p>your first name...</p>
+	<%= form.text_field :first_name %>
+
+	<p>your last name...</p>
+	<%= form.text_field :last_name %>
+
+	<p>a screen name (this'll identify you most often, it must be under 11 characters)...</p>
+	<%= form.text_field :screen_name %>
+
+	<p>your email...</p>
+	<%= form.text_field :email %>
+
+	<%= form.fields_for :commissioner do | build | %>
+
+		<p>and a password...</p>
+		<%= build.password_field :password %>
+
+		<p>which you should go ahead and confirm by re-typing.</p>
+		<%= build.password_field :password_confirmation %>
+
+	<% end %>
+	<br>
+	<%= form.submit 'Next' %>
+<% end %>
+
