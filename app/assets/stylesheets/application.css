@@ -13,12 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400|Roboto+Condensed:300,400');
+
+* {
+	transition: all .25s linear;
+}
 
 body,html {
 	width: 100%;
 	margin: 0;
-}
-
-.wrapper {
-	padding: 20px 40px;
 }
