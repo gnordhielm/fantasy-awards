@@ -11,7 +11,7 @@ class Commissioner < ApplicationRecord
 
 
   def init
-    self.designer  ||= false
+    self.designer ||= false
   end
 
 end

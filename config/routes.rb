@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'static_pages#welcome'
 
+  get '/designer-dashboard', to: 'designers#dashboard', as: :designer
+  post '/designer-dashboard', to: 'designers#create', as: :designer_create
+  patch '/designer-dashboard/:player_id', to: 'designers#update', as: :designer_update
+  delete '/designer-dashboard/:player_id', to: 'designers#destroy', as: :designer_destroy
+
+
   get  '/welcome',    to: 'static_pages#welcome'
   get  '/about',      to: 'static_pages#about'
   get  '/help',       to: 'static_pages#help'
@@ -16,6 +22,7 @@ Rails.application.routes.draw do
   post '/commissioner-signup', to: 'commissioners#create'
 
 
+
   get  '/commissioners/:commissioner_id/new-league', to: 'leagues#new', as: :new_league
   post  '/commissioners/:commissioner_id/new-league', to: 'leagues#create'
   get  '/:league_id', to: 'leagues#show', as: :league
@@ -26,9 +33,6 @@ Rails.application.routes.draw do
   post  '/:league_id/new-ballot', to: 'ballots#create'
 
   get  '/:league_id/:ballot_id',  to: 'ballots#show', as: :league_ballot
-
-
-
 
   get   '/commissioners/:commissioner_id', to: "commissioners#show", as: 'commissioner'
   get   '/commissioners/edit/:commissioner_id', to: "commissioners#show"
