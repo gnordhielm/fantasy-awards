@@ -7,11 +7,10 @@ class Commissioner < ApplicationRecord
   has_many :leagues, through: :league_commissioners
 
   has_secure_password
-  # validates :password, presence: true, length: { minimum: 6 }
-
+  validates :password, presence: true, length: { minimum: 6 }
 
   def init
-    self.designer ||= false
+    self.designer ||= true
   end
 
 end
