@@ -1,4 +1,285 @@
 
-.wrapper {
-	padding: 20px 40px;
+
+/* Structure Elements */
+* {
+	-webkit-transition: all .35s;
+	-moz-transition: all .35s;
+	transition: all .35s;
 }
+.wrapper {
+	width: 500px;
+	margin: 0 auto;
+	padding: 50px 0 30px;
+}
+
+footer {
+	padding: 20px;
+	text-align: center;
+	clear: both;
+}
+
+/* Color Scheme */
+
+$purple-dark-1: #3c2244;
+$purple-base: #4b3051;
+$purple-light-1: #c49ace;
+
+$orange-dark-3: #9f3f18;
+$orange-dark-2: #b34c20;
+$orange-dark-1: #ca5824;
+$orange-base: #d75d27;
+$orange-light-1: #fd8241;
+$orange-light-2: #fed4bc;
+
+$teal-dark-2: #3a6c62;
+$teal-dark-1: #5d9388;
+$teal-base: #6fa79b;
+
+$red-base: #bd2121;
+
+
+body.welcome {
+	background-color: $orange-base;
+	p, a.inline {
+		color: $orange-light-2;
+	}
+	a.inline:hover {
+	    color:$orange-dark-3;
+	}
+	a.inline::after {
+	    background:$orange-dark-3;
+	}
+	a.button {
+		color: #fff;
+		background-color:$teal-dark-1;
+		border: 2px solid white;
+	}
+	a.button:hover {
+		background-color: white;
+		color:#3f786b;
+		border: 2px solid white;
+	}
+	section {
+		border: solid $orange-dark-3;
+		background-color: $orange-dark-3;
+		color:$orange-dark-3;
+		svg {
+			.line {
+				fill:none;
+				stroke:$orange-light-2;
+				stroke-miterlimit:10;
+				stroke-width:5px;
+			}
+			.fill {
+				fill:$orange-light-2;
+			}
+		}
+	}
+	input[type='submit'] {
+		margin-top: 15px;
+		background-color: $orange-dark-3;
+		color: $orange-light-2; 
+		border: 2px solid $orange-light-2;
+	}
+	input[type='submit']:hover {
+		background-color: $orange-light-2;
+		color: $orange-dark-3; 
+	}
+	input[type='text'], input[type='password'] {
+	    background: $orange-light-2;
+	    color: $orange-dark-3;
+	}
+	input[type='text']:focus, input[type='password']:focus {
+	    background: $orange-light-2;
+	    color: $orange-dark-3;
+	}
+	small {
+		color: $orange-dark-3;
+	}
+	hr {
+		height: 2px;
+		background: $orange-light-2;
+	}
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    margin: 6px 0;
+    background: #fff;
+}
+
+/* General Typography */
+
+$header-font: "Roboto Condensed", sans-serif;
+$body-font: "Poppins", sans-serif;
+
+h1 {
+	color: #fff;
+	font-family: $header-font;
+	text-transform: uppercase;
+	font-size: 50px;
+	text-align: right;
+	letter-spacing: .5px;
+	margin: 0;
+}
+
+p,form,input {
+	font-family:$body-font;
+	font-size:14px;
+	font-weight: 300;
+}
+
+form {
+	font-family:$body-font;
+}
+
+small {
+	font-family:$body-font;
+	font-size:11px;
+	font-weight: 400;
+}
+/* Inline Links */
+
+/* 
+link hover effect based on Mary Lou's tympanus collection:
+https://tympanus.net/Development/CreativeLinkEffects
+*/
+
+a.inline {
+	font-family:$body-font;
+	font-size:14px;
+	font-weight: 300;
+	text-decoration: none;
+	position: relative;
+	text-shadow: none;
+	-webkit-transition: color 0.35s;
+	-moz-transition: color 0.35s;
+	transition: color 0.35s;
+
+}
+
+a.inline::after {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	content: '';
+	opacity: 1;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.5s;
+	-moz-transition: opacity 0.3s, -moz-transform 0.5s;
+	transition: opacity 0.3s, transform 0.5s;
+	-webkit-transform: translateY(20px);
+	-moz-transform: translateY(20px);
+	transform: translateY(20px);
+}
+
+a.inline:hover::after, a.inline:focus::after {
+	opacity: 0;
+	-webkit-transform: translateY(14px);
+	-moz-transform: translateY(14px);
+	transform: translateY(14px);
+}
+
+/* Button-style links */
+
+a.button {
+	text-align: center;
+	font-family:$body-font;
+	font-size:16px;
+	font-weight: 300;
+	text-decoration: none;
+	text-shadow: none;
+	padding: 10px;
+	display: block;
+	width: 140px;
+	margin:40px auto 50px;
+}
+
+/* Button-style links */
+
+a.button {
+	text-align: center;
+	font-family:$body-font;
+	font-size:16px;
+	font-weight: 300;
+	text-decoration: none;
+	text-shadow: none;
+	padding: 10px;
+	display: block;
+	width: 140px;
+	margin:60px auto 60px;
+}
+
+/* Bordered Sections */
+
+div.section-container {
+	width: 100%;
+	margin-top: 20px;
+	clear: both;
+}
+section {
+	border: 3px solid white;
+	float: left;
+	height: 240px;
+	margin-right: 10px;
+	width: 237px;
+	padding: 15px 20px;
+	form {
+		text-align: center;
+	}
+	svg {
+		width: 40px;
+		display: block;
+		margin: 0 auto;
+	}
+	p {
+		margin: 0;
+	}
+}
+
+section.cap {
+	width: 160px;
+	margin-right: 0;
+}
+
+/* Forms & Form Elements */
+
+label {
+	font-size: 13px;
+	color: #444;
+}
+
+form {
+	p {
+		margin: 5px 0;
+	}
+}
+
+/* Text Fields */
+
+input[type='text'], input[type='password'] {
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+	width: 150px;
+
+	padding: 6px 6px;
+    border: none;
+    outline: none;
+
+}
+
+/* Submit Buttons */
+
+input[type='submit'] {    
+	padding: 6px 15px;
+    border: none;
+}
+
+input[type='submit']:hover {
+	cursor: pointer;
+}
+
+
+

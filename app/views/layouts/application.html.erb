@@ -11,6 +11,7 @@
   <body class="<%= body_class %>">
   	<div class="wrapper">
   	<h1><%= @title %></h1>
+  	<hr>
 	  	<% if notice %>
 	      <%= notice %>
 	    <% end %>
@@ -23,15 +24,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   	</div>
 
+  	<% if current_user && current_user.commissioner %>
     <div style="color:#c4c7ba;background-color:#27292c;padding:10px 20px;width:100%;font-family:'courier',monospace;font-size:14px;">
-      	<% if current_user %>
       		<%= "Logged in as #{@current_user.email}" %>
       		<%= link_to "Log Out", logout_path %>
 	   		 <br>
 	   		 <br>
-   		 <% end %>
 	    <%= params.inspect %>
     </div>
+	 <% end %>
 
   </body>
 </html>

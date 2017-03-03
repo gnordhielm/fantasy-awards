@@ -10,7 +10,7 @@ class Commissioner < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   def init
-    self.designer ||= true
+    self.designer ||= false
   end
 
 end

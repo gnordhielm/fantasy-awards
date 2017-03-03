@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   delete '/designer-dashboard/:player_id', to: 'designers#destroy', as: :designer_destroy
 
 
-  get  '/welcome',    to: 'static_pages#welcome'
-  get  '/about',      to: 'static_pages#about'
-  get  '/help',       to: 'static_pages#help'
+  get  '/welcome',    to: 'static_pages#welcome', as: :welcome
+  get  '/about',      to: 'static_pages#about', as: :about
+  get  '/help',       to: 'static_pages#help', as: :help
 
   post '/',   to: 'sessions#create'
   post '/welcome',   to: 'sessions#create'
