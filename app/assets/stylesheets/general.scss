@@ -1,9 +1,13 @@
 
 /* Color Scheme */
 
+$purple-dark-3: #3c2244;
+$purple-dark-2: #3c2244;
 $purple-dark-1: #3c2244;
 $purple-base: #4b3051;
 $purple-light-1: #c49ace;
+$purple-light-2: #c49ace;
+$purple-light-3: #c49ace;
 
 $orange-dark-3: #9f3f18;
 $orange-dark-2: #b34c20;
@@ -25,6 +29,55 @@ $red-dark-2: #7f2117;
 $red-base: #9a2c22;
 $red-light-3: #f89b8c;
 
+
+
+body.dashboard {
+	background-color: $purple-base;
+	p, a.inline {
+		color: $purple-light-3;
+	}
+	a.inline:hover {
+	    color:$purple-dark-3;
+	}
+	a.inline::after {
+	    background:$purple-dark-3;
+	}
+	a.button {
+		color: #fff;
+		background-color:$purple-base;
+		border: 2px solid white;
+	}
+	a.button:hover {
+		background-color: white;
+		color:#3f786b;
+		border: 2px solid white;
+	}
+	input[type='submit'] {
+		margin-top: 15px;
+		background-color: $purple-base;
+		color: $purple-light-3; 
+		border: 2px solid $purple-light-3;
+	}
+	input[type='submit']:hover {
+		background-color: $purple-light-3;
+		color: $purple-dark-3; 
+	}
+	input[type='text'], input[type='password'] {
+	    background: $purple-light-3;
+	    color: $purple-dark-3;
+	}
+	input[type='text']:focus, input[type='password']:focus {
+	    background: $purple-light-3;
+	    color: $purple-dark-3;
+	}
+	small {
+		color: $purple-dark-3;
+	}
+	.private-link {
+		background-color: $purple-dark-3;
+	}
+}
+
 body.start-a-league {
 	form {
 		p {
@@ -32,7 +85,6 @@ body.start-a-league {
 		}
 	}
 }
-
 
 body.sign-up, body.start-a-league {
 	background-color: $teal-base;
@@ -202,6 +254,14 @@ h1 {
 	margin: 0;
 }
 
+h2 {
+	color:#fff;
+	font-family: $header-font;
+	font-size:30px;
+	display: inline-block;
+	margin: 10px 0 0;
+}
+
 p,form,input {
 	font-family:$body-font;
 	font-size:14px;
@@ -262,6 +322,14 @@ hr {
 	    -ms-transform: translate(4px, 3.4px);
 	    -webkit-transform: translate(4px, 3.4px);
 	    transform: translate(4px, 3.4px);
+	}
+}
+
+.private-link {
+	padding: 10px 20px;
+	margin: 15px 25px;
+	p {
+		margin: 0;
 	}
 }
 
