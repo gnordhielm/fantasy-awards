@@ -1,13 +1,13 @@
 #Fantasy Oscars
 >In this brief note directly under the title, I would like to acknowledge the relative frivolity of this project. Since it's a frivolity I'll be engaged with regardless of my excuse, I'm going to commit myself to making this Rails implementation as robust and delightful as possible. At the very least, it'll bring down the net time I devote, annually, to making a fantasy sports game out of the Oscars...
 
-## Peer Review
+## Instructor Review
 
-Hello, valued peer-reviewer. Presently, my project is just a few steps past MVP, so excuse its drab appearance. 
+Hello, valued instructor! To speed up your review of my app, here's a bit of a roadmap you can follow.
 
 There are three different kinds of users in the app: players (not authenticated), commissioners (authenticated, but lacking some administrative power), and designers (authenticated, all-powerful). 
 
-You don't need to go through the app as every user type, but I do recommend you create a commissioner account and visit `/designer-dashboard`, as there's some important functionality there you can't get to in other ways. For demo purposes, all new commissioners are automatically designers. 
+Once you've tried making an account the normal way and seeing what you can do, I recommend logging in as a designer with the following credentials: `email: sudo@ga.co, password: password`. Visit `/designer-dashboard` once logged in, as there's some important functionality there you can't get to in other ways. 
 
 Here's a link to my Trello Board:
 
@@ -54,11 +54,11 @@ Obviously, that won't scale. This app is meant to be an answer to that. I can us
 
 ## Technologies Used
 
-This project uses the **Rails 5** framework with **BCrypt** for authentication. Beyond those included in the framework and the one mentioned before, no other gems were used. 
+This project uses the **Rails** framework with **BCrypt** for authentication. Beyond those included in the framework and the one mentioned before, I also used the [Zero Clipboard](https://github.com/zeroclipboard/zeroclipboard-rails) gem to facilitate copying to the clipboard on a single click.
 
 ## Installation Instructions
 
-This project was built in Rails. Running it locally is a simple matter of cloning this repository to your machine, opening up the root in a command-line-interface, running `bundle install`, then `rails s` to start the server.
+To run this project locally, you'll want to have Rails installed on your local machine. Clone the repository locally, then open the root folder in your CLI. First `bundle install` to get all of the necessary gems loaded up. Then run `rails db:create` and `rails db: migrate` to set the database up. Finally, run `rails s` to start the local server, and navigate to the port it indicates in your browser of choice.
 
 ## Still to Do
 

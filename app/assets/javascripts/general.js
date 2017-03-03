@@ -14,3 +14,7 @@ $('#league_award_name').focusout(function(e){
 })
 
 ///// Copy Link /////
+$(document).ready(function() {
+var clip = new ZeroClipboard($("#copy-button"))
+})
+

@@ -1,13 +1,13 @@
 
 /* Color Scheme */
 
-$purple-dark-3: #3c2244;
+$purple-dark-3: #331c3a;
 $purple-dark-2: #3c2244;
 $purple-dark-1: #3c2244;
-$purple-base: #4b3051;
+$purple-base: #55315d;
 $purple-light-1: #c49ace;
 $purple-light-2: #c49ace;
-$purple-light-3: #c49ace;
+$purple-light-3: #e0bfea;
 
 $orange-dark-3: #9f3f18;
 $orange-dark-2: #b34c20;
@@ -34,7 +34,7 @@ $red-light-3: #f89b8c;
 body.dashboard {
 	background-color: $purple-base;
 	p, a.inline {
-		color: $purple-light-3;
+		color: $purple-light-2;
 	}
 	a.inline:hover {
 	    color:$purple-dark-3;
@@ -75,6 +75,23 @@ body.dashboard {
 	}
 	.private-link {
 		background-color: $purple-dark-3;
+
+		p {
+			color: $purple-base;
+			font-weight: 400;
+		}
+		span {
+			color: $purple-light-3;
+			font-weight: 300;
+		}
+	}
+	.copy-icon {
+		cursor: pointer;
+		fill: $purple-dark-3;
+	}
+	.copy-icon:hover {
+		cursor: pointer;
+		fill: $purple-light-3;
 	}
 }
 
@@ -325,9 +342,19 @@ hr {
 	}
 }
 
+.copy-icon {
+	margin: 0 5px -3px;
+	height: 17px;
+	fill:#fff;
+}
+.copy-icon:hover {
+	cursor: pointer;
+}
+
 .private-link {
-	padding: 10px 20px;
-	margin: 15px 25px;
+	display: inline-block;
+	padding: 5px 15px;
+	margin: 15px 0;
 	p {
 		margin: 0;
 	}
@@ -350,7 +377,6 @@ a.inline {
 	-webkit-transition: color 0.35s;
 	-moz-transition: color 0.35s;
 	transition: color 0.35s;
-
 }
 
 a.inline::after {

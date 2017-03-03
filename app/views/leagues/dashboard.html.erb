@@ -1,9 +1,14 @@
-<h2><%= @league.league_name %></h2>
-	
-<div class="private-link">
-	<p>Your league's private link: <span id="league-link"><%= league_url @league %></span></p>
-</div>
 
+<div class="private-link">
+	<p>
+		Your link: <span id="league-link"><%= league_url @league %></span> 
+	</p>
+</div>
+<svg class="copy-icon" data-clipboard-target='league-link' id='copy-button' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
+	<rect x="6" y="3" width="6" height="20" transform="translate(23.28 18.17) rotate(142.38)"/>
+	<rect x="18" y="0" width="6" height="20" transform="translate(43.54 4.7) rotate(142.38)"/>
+</svg>
+<br>
 <%= link_to "Go to league view", league_path(@league), class:'inline' %>
 <% if @commissioner.designer %>
 	<%= link_to "Designer Dashboard", designer_path, class:'inline' %>
@@ -13,6 +18,14 @@
 	<p><%= link_to "Your Ballot", league_ballot_path(@league, @commissioner.player.ballot), class:'inline' %></p>
 <% else %>
 	<p><%= link_to "New Ballot", league_new_ballot_path(@league), class:'inline' %></p>
+<% end %>
+
+<h2>Ballots in <%= @league.league_name %></h2>
+
+<% if @commissioner.leagues.first.ballots.count > 0 %>
+	<p>Some</p>
+<% else %>
+	<p>None at the moment... share your link to get some!</p>
 <% end %>
 
 <h2>Coming soon:</h2>
