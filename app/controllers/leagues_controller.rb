@@ -1,9 +1,10 @@
 class LeaguesController < ApplicationController
+  before_action :logged_in?
 
   def new
     @league = League.new
 
-    @title = "Start your League"
+    @title = "Start a League"
   end
 
   def create
@@ -23,6 +24,8 @@ class LeaguesController < ApplicationController
   def show
     @league = League.find(params[:league_id])
     @ballots = Ballot.where(league_id: params[:league_id])
+
+    @title = @league.league_name
   end
 
   def dashboard
@@ -33,10 +36,7 @@ class LeaguesController < ApplicationController
       flash[:alert] = "You must be logged in to see that page."
       redirect_to root_path
     end
-  end
-
-  def index
-    @leagues = League.all
+    @title = "Dashboard"
   end
 
 
@@ -44,6 +44,10 @@ private
   # Never trust parameters from the scary internet, only allow the white list through.
   def league_params
      params.require(:league).permit(:league_name, :award_name)
+  end
+
+  def logged_in?
+    redirect_to root_path, alert: 'You must be logged in to see that page.' unless current_user
   end
 
 end

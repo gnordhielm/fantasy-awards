@@ -1,18 +1,19 @@
 
-<h1>Start a League</h1>
-
 <%= form_for @league, url: {action: "create"} do | form | %>
 
-	<p>The first thing to do is name your league. It's easy to change this later, so don't stress too much about it.</p>
+	<p>The first thing to do is name your league! No two leagues can have the same name, so make sure you pick something distinctive.</p>
 
 	<%= form.text_field :league_name %>
+	<br>
+	<br>
 
 	<p>Next, pick the name for your league's award. One of the things the app does is get everybody in your league to submit their favorite movies of the year, then it tallies up the results to answer the question: according to <span class="league-name">your league</span>, what was the best movie of the year?</p>
 
 	<%= form.text_field :award_name %>
-
-	<p>"I hear <em>Blue is the Warmest Color</em> is a shoe-in for the <span class="award-name"><span class="league-name">Golden Red Herring</span> Award</span>."</p>
-
 	<br>
+	<br>
+
+	<p>"I hear that <em>Blue is the Warmest Color</em> is a shoe-in for the <span class="award-name"><span class="league-name">Golden Red Herring</span> Award</span>."</p>
+
 	<%= form.submit 'Done' %>
 <% end %>

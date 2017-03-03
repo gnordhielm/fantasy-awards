@@ -7,8 +7,12 @@ module ApplicationHelper
 
   # Provides the right class for the body tag depending on what view was loaded.
   def body_class
-    @title ? @title.downcase : "generic"
+    @title ? @title.parameterize : "generic"
   end
 
+  # Returns true if the view gets a home button
+  def gets_home?
+    !@title.downcase.include? "welcome"
+  end
 
 end

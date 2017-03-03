@@ -17,14 +17,13 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: :logout
 
   # sign up form for creating a new player and user model. 
-  get  '/commissioner-signup', to: 'commissioners#new', as: :new_commissioner
+  get  '/sign-up', to: 'commissioners#new', as: :new_commissioner
   # post action to create the new models. 
-  post '/commissioner-signup', to: 'commissioners#create'
+  post '/sign-up', to: 'commissioners#create'
 
 
-
-  get  '/commissioners/:commissioner_id/new-league', to: 'leagues#new', as: :new_league
-  post  '/commissioners/:commissioner_id/new-league', to: 'leagues#create'
+  get  '/start-a-league', to: 'leagues#new', as: :new_league
+  post  '/start-a-league', to: 'leagues#create'
   get  '/:league_id', to: 'leagues#show', as: :league
 
   get  '/dashboard/:league_id', to: 'leagues#dashboard', as: :league_dashboard

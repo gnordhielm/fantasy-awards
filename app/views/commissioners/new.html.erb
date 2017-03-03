@@ -1,27 +1,26 @@
 
-
-<p>A league must have a commissioner. As a commissioner, you'll have all kinds of administrative power (woohoo!), so please provide...</p>
+<p>As a commissioner, the first thing you need to do is make an account, please provide...</p>
 
 <%= form_for @player, url: {action: "create"} do | form | %>
 
-	<p>your first name...</p>
+	<p>Your first name...</p>
 	<%= form.text_field :first_name %>
 
-	<p>your last name...</p>
+	<p>Your last name...</p>
 	<%= form.text_field :last_name %>
 
-	<p>a screen name (this'll identify you most often, it must be under 11 characters)...</p>
-	<%= form.text_field :screen_name %>
-
-	<p>your email...</p>
+	<p>Your email...</p>
 	<%= form.text_field :email %>
+
+	<p>A screen name (must be under 11 characters)...</p>
+	<%= form.text_field :screen_name %>
 
 	<%= form.fields_for :commissioner do | build | %>
 
-		<p>and a password...</p>
+		<p>And a password...</p>
 		<%= build.password_field :password %>
 
-		<p>which you should go ahead and confirm by re-typing.</p>
+		<p>Which you should go ahead and confirm.</p>
 		<%= build.password_field :password_confirmation %>
 
 	<% end %>

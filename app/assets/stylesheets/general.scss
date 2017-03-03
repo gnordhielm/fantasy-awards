@@ -1,23 +1,4 @@
 
-
-/* Structure Elements */
-* {
-	-webkit-transition: all .35s;
-	-moz-transition: all .35s;
-	transition: all .35s;
-}
-.wrapper {
-	width: 500px;
-	margin: 0 auto;
-	padding: 50px 0 30px;
-}
-
-footer {
-	padding: 20px;
-	text-align: center;
-	clear: both;
-}
-
 /* Color Scheme */
 
 $purple-dark-1: #3c2244;
@@ -31,12 +12,115 @@ $orange-base: #d75d27;
 $orange-light-1: #fd8241;
 $orange-light-2: #fed4bc;
 
+$teal-dark-3: #3a6c62;
 $teal-dark-2: #3a6c62;
-$teal-dark-1: #5d9388;
-$teal-base: #6fa79b;
+$teal-dark-1: #3a6c62;
+$teal-base: #5d9388;
+$teal-light-1: #6fa79b;
+$teal-light-2: #83b4a9;
+$teal-light-3: #a9ded2;
 
-$red-base: #bd2121;
+$red-dark-3: #6a1b13;
+$red-dark-2: #7f2117;
+$red-base: #9a2c22;
+$red-light-3: #f89b8c;
 
+body.start-a-league {
+	form {
+		p {
+			text-align: left;
+		}
+	}
+}
+
+
+body.sign-up, body.start-a-league {
+	background-color: $teal-base;
+	p, a.inline {
+		color: $teal-light-3;
+	}
+	a.inline:hover {
+	    color:$teal-dark-3;
+	}
+	a.inline::after {
+	    background:$teal-dark-3;
+	}
+	a.button {
+		color: #fff;
+		background-color:$teal-base;
+		border: 2px solid white;
+	}
+	a.button:hover {
+		background-color: white;
+		color:#3f786b;
+		border: 2px solid white;
+	}
+	input[type='submit'] {
+		margin-top: 15px;
+		background-color: $teal-base;
+		color: $teal-light-3; 
+		border: 2px solid $teal-light-3;
+	}
+	input[type='submit']:hover {
+		background-color: $teal-light-3;
+		color: $teal-dark-3; 
+	}
+	input[type='text'], input[type='password'] {
+	    background: $teal-light-3;
+	    color: $teal-dark-3;
+	}
+	input[type='text']:focus, input[type='password']:focus {
+	    background: $teal-light-3;
+	    color: $teal-dark-3;
+	}
+	small {
+		color: $teal-dark-3;
+	}
+}
+
+body.about {
+	background-color: $red-base;
+	p, a.inline {
+		color: $red-light-3;
+	}
+	a.inline:hover {
+	    color:$red-dark-3;
+	}
+	a.inline::after {
+	    background:$red-dark-3;
+	}
+	a.button {
+		color: #fff;
+		background-color:$teal-base;
+		border: 2px solid white;
+	}
+	a.button:hover {
+		background-color: white;
+		color:#3f786b;
+		border: 2px solid white;
+	}
+	input[type='submit'] {
+		margin-top: 15px;
+		background-color: $red-dark-3;
+		color: $red-light-3; 
+		border: 2px solid $red-light-3;
+	}
+	input[type='submit']:hover {
+		background-color: $red-light-3;
+		color: $red-dark-3; 
+	}
+	input[type='text'], input[type='password'] {
+	    background: $red-light-3;
+	    color: $red-dark-3;
+	}
+	input[type='text']:focus, input[type='password']:focus {
+	    background: $red-light-3;
+	    color: $red-dark-3;
+	}
+	small {
+		color: $red-dark-3;
+	}
+}
 
 body.welcome {
 	background-color: $orange-base;
@@ -51,7 +135,7 @@ body.welcome {
 	}
 	a.button {
 		color: #fff;
-		background-color:$teal-dark-1;
+		background-color:$teal-base;
 		border: 2px solid white;
 	}
 	a.button:hover {
@@ -63,6 +147,10 @@ body.welcome {
 		border: solid $orange-dark-3;
 		background-color: $orange-dark-3;
 		color:$orange-dark-3;
+		hr {
+			height: 2px;
+			background: $orange-light-2;
+		}
 		svg {
 			.line {
 				fill:none;
@@ -96,18 +184,8 @@ body.welcome {
 	small {
 		color: $orange-dark-3;
 	}
-	hr {
-		height: 2px;
-		background: $orange-light-2;
-	}
 }
 
-hr {
-    border: 0;
-    height: 3px;
-    margin: 6px 0;
-    background: #fff;
-}
 
 /* General Typography */
 
@@ -139,6 +217,54 @@ small {
 	font-size:11px;
 	font-weight: 400;
 }
+
+/* Structure and Common Elements */
+* {
+	-webkit-transition: all .35s;
+	-moz-transition: all .35s;
+	transition: all .35s;
+}
+.wrapper {
+	width: 500px;
+	margin: 0 auto;
+	padding: 50px 0 30px;
+}
+
+footer {
+	padding: 20px;
+	text-align: center;
+	clear: both;
+}
+
+hr {
+    border: 0;
+    height: 3px;
+    margin: 6px 0;
+    background: #fff;
+}
+
+#home-button {
+	position: absolute;
+	top: 90px;
+	height: 20px;
+	fill:#fff;
+	text {
+	    -ms-transform: translate(4px, 10px);
+	    -webkit-transform: translate(4px, 10px);
+	    transform: translate(4px, 10px);
+		font-size:4px;
+		font-family: $body-font;
+		text-transform: uppercase;
+	}
+}
+#home-button:hover {
+	text {
+	    -ms-transform: translate(4px, 3.4px);
+	    -webkit-transform: translate(4px, 3.4px);
+	    transform: translate(4px, 3.4px);
+	}
+}
+
 /* Inline Links */
 
 /* 
@@ -225,7 +351,7 @@ section {
 	margin-right: 10px;
 	width: 237px;
 	padding: 15px 20px;
-	form {
+	form, input {
 		text-align: center;
 	}
 	svg {
@@ -251,6 +377,7 @@ label {
 }
 
 form {
+	text-align: center;
 	p {
 		margin: 5px 0;
 	}
@@ -261,9 +388,7 @@ form {
 input[type='text'], input[type='password'] {
 	font-size: 12px;
 	font-weight: 400;
-	text-align: center;
 	width: 150px;
-
 	padding: 6px 6px;
     border: none;
     outline: none;
