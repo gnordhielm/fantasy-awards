@@ -7,7 +7,7 @@ Hello, valued instructor! To speed up your review of my app, here's a bit of a r
 
 There are three different kinds of users in the app: players (not authenticated), commissioners (authenticated, but lacking some administrative power), and designers (authenticated, all-powerful). 
 
-Once you've tried making an account the normal way and seeing what you can do, I recommend logging in as a designer with the following credentials: `email: sudo@ga.co, password: password`. Visit `/designer-dashboard` once logged in, as there's some important functionality there you can't get to in other ways. 
+Once you've tried making an account the normal way and seeing what you can do, I recommend logging in as a designer with the following credentials: `email: sudo@ga.co, password: password`. Visit `/designer-dashboard` once logged in, as there's some important functionality there that you can't get to in other ways. 
 
 Here's a link to my Trello Board:
 
@@ -17,6 +17,13 @@ And a copy of my ERD:
 
 ![erd](readme_assets/erd.jpg)
 
+## Technologies Used
+
+This project uses the **Rails** framework with **BCrypt** for authentication. Beyond those included in the framework and the one mentioned before, I also used the [Zero Clipboard](https://github.com/zeroclipboard/zeroclipboard-rails) gem to facilitate copying to the clipboard on a single click.
+
+## Installation Instructions
+
+To run this project locally, you'll want to have Rails installed on your local machine. Clone the repository locally, then open the root folder in your CLI. First `bundle install` to get all of the necessary gems loaded up. Then run `rails db:create` and `rails db: migrate` to set the database up. Finally, run `rails s` to start the local server, and navigate to the port it indicates in your browser of choice.
 ## Process
 
 **Fantasy Oscars**
@@ -51,14 +58,6 @@ Obviously, that won't scale. This app is meant to be an answer to that. I can us
 * Creating a robust and reusable framework for a game designer.
 * Cultural punditry through the Oscars game - the game as self-expression.
 * Replicating standard social dynamics in software.
-
-## Technologies Used
-
-This project uses the **Rails** framework with **BCrypt** for authentication. Beyond those included in the framework and the one mentioned before, I also used the [Zero Clipboard](https://github.com/zeroclipboard/zeroclipboard-rails) gem to facilitate copying to the clipboard on a single click.
-
-## Installation Instructions
-
-To run this project locally, you'll want to have Rails installed on your local machine. Clone the repository locally, then open the root folder in your CLI. First `bundle install` to get all of the necessary gems loaded up. Then run `rails db:create` and `rails db: migrate` to set the database up. Finally, run `rails s` to start the local server, and navigate to the port it indicates in your browser of choice.
 
 ## Still to Do
 
