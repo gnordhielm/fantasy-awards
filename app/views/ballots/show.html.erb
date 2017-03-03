@@ -1,5 +1,7 @@
-<h1>Ballot: <%= @ballot.player.screen_name %></h1>
-<%= link_to "Back", league_path(@league) %>
+<h2><%= @ballot.player.screen_name %></h2>
+<br>
+<br>
+<%= link_to "Back", league_path(@league.league_path), class: 'inline' %>
 
 <p><strong>Best picture:</strong> <%= @ballot.best_picture %></p> 
 

@@ -1,14 +1,34 @@
-<h1><%= @league.league_name %></h1>
+<h2><%= @league.league_name %></h2>
+<br>
+<br>
 <% if current_user %>
-	<%= link_to "Go to dashboard", league_dashboard_path(@league.league_path) %>
+	<%= link_to "Go to dashboard", league_dashboard_path(@league.league_path), class: 'inline' %>
 <% end %>
-<hr>
 
-<ul>
-<% @ballots.each do |ballot|%>
-	<li><%= link_to ballot.player.screen_name, [ballot.league, ballot] %></li>
-<% end %>
-<% if !current_user %>
-	<li><%= link_to "New Ballot", league_new_ballot_path(@league.league_path) %></li>
-<% end %>
-</ul>
+
+
+<div class="main">
+  <% @ballots.each do |ballot| %>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 235 250" class="ballot">
+      <a href="<%= league_ballot_path(ballot.league.league_path, ballot) %>">
+        <rect class="back-panel pointer" x="19.6" y="23.22"/>
+      </a>
+      <rect class="ballot-frame" x="3.51" y="31.32" width="149.92" height="149.92"/>
+      <text class="ballot-name" transform="translate(2.51 215)"><%= ballot.player.screen_name %></text>
+    </svg>
+  <% end %>
+
+
+	<% if !current_user %>
+	  <svg id="new-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 235 250" class="ballot new-ballot">
+	  <a href="<%= league_new_ballot_path(@league.league_path) %>">
+	    
+	    <rect class="new-panel pointer" x="20" y="49" rx="100" height="115" width="115"></rect>
+	    <polygon class="new-icon pointer" points="108 97 108 117 88 117 88 137 68 137 68 117 48 117 48 97 68 97 68 77 88 77 88 97 108 97"/>
+	  </a>
+	    <rect class="new-frame" x="20" y="49" rx="100" height="115" width="115"/>
+	    <text class="new-name default" fill="#9a2c22" transform="translate(2.51 215)">New Ballot</text>
+	    <text class="ballot-alerts" transform="translate(2.51 240)"></text>
+	  </svg>
+	<% end %>
+</div>

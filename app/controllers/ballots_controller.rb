@@ -5,15 +5,15 @@ class BallotsController < ApplicationController
       @league = League.find_by(league_path: params[:league_path])
       @ballot = Ballot.new
     else
-      @league = League.find(league_path: params[:league_path])
+      @league = League.find_by(league_path: params[:league_path])
       @player = Player.new
       @player.build_ballot
     end
     @title = "New Ballot"
-  end
+  end  
 
   def create
-    @league = League.find(league_path: params[:league_path])
+    @league = League.find_by(league_path: params[:league_path])
     if current_user
       @ballot = Ballot.new(ballot_params)
 
@@ -21,13 +21,13 @@ class BallotsController < ApplicationController
       @ballot.player_id = current_user.id
 
       if @ballot.save
-        redirect_to league_dashboard_path(@league.id)
+        redirect_to league_dashboard_path(@league.league_path)
       else
         flash[:alert] = "This form has not been filled out correctly..."
         redirect_to request.referrer
       end
     else
-      @league = League.find(league_path: params[:league_path])
+      @league = League.find_by(league_path: params[:league_path])
       @player = Player.new
 
       @player.first_name = player_ballot_params[:first_name]
@@ -46,7 +46,7 @@ class BallotsController < ApplicationController
         @ballot.player_id = @player.id
 
         if @ballot.save
-          redirect_to league_path(@league)
+          redirect_to league_path(@league.league_path)
         else
           flash[:alert] = "Please check the validity of your email, and the length of your names."
           redirect_to request.referrer
@@ -59,10 +59,17 @@ class BallotsController < ApplicationController
     end
   end
 
+  def destroy
+    @league = League.find_by(league_path: params[:league_path])
+    @player = Ballot.find(params[:ballot_id]).player
+    @player.destroy
+    redirect_to league_dashboard_path(@league.league_path)
+  end
+
   def show
-    @league = League.find(league_path: params[:league_path])
+    @league = League.find_by(league_path: params[:league_path])
     @ballot = Ballot.find(params[:ballot_id])
-    @title = @ballot.player.screen_name
+    @title = "View Ballot"
   end
 
 private

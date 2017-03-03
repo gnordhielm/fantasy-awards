@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post  '/:league_path/new-ballot', to: 'ballots#create'
 
   get  '/:league_path/:ballot_id',  to: 'ballots#show', as: :league_ballot
+  delete  '/:league_path/:ballot_id',  to: 'ballots#destroy', as: :league_ballot_destroy
 
   get   '/commissioners/:commissioner_id', to: "commissioners#show", as: 'commissioner'
   get   '/commissioners/edit/:commissioner_id', to: "commissioners#show"

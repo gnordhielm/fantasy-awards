@@ -26,10 +26,124 @@ $teal-light-3: #a9ded2;
 
 $red-dark-3: #6a1b13;
 $red-dark-2: #7f2117;
+$red-dark-1: #7f2117;
 $red-base: #9a2c22;
+$red-light-1: #f89b8c;
+$red-light-2: #f89b8c;
 $red-light-3: #f89b8c;
 
+body.view-ballots {
+	.main {
+		margin-right: -70px;
+	}
+		.ballot {
+		width: 185px;
+		float: left;
+	}
 
+	.back-panel {
+		fill:#5b9388;
+		width: 150px;
+		height: 150px;
+	}
+
+	.ballot-frame {
+		fill:none;
+		stroke-miterlimit:10;
+		stroke:#fff;
+		stroke-width:4px;
+	}
+
+	.ballot-text {
+		font-size:20.51px;
+		fill:#a23b2a;
+	}
+
+	.ballot-name {
+		fill: #fff;
+		font-family: "Roboto Condensed", sans-serif;
+		text-transform: uppercase;
+		font-size: 28px;
+		text-align: right;
+		letter-spacing: -.4px;
+	}
+
+	.ballot-alerts {
+		fill: #a23b2a;
+		font-family: "Roboto Condensed", sans-serif;
+		text-transform: uppercase;
+		font-size: 20px;
+		text-align: right;
+		letter-spacing: -.4px;
+	}
+
+	.new-frame {
+		stroke: #fff;
+		stroke-width: 4px;
+		fill: none;
+		stroke-miterlimit: 10;
+	}
+
+	.new-icon {
+		fill: #fff;
+		cursor: pointer;
+	}
+
+	.new-panel {
+		fill:$red-base;
+		cursor: pointer;
+	}
+
+	.new-name {
+		font-family: "Roboto Condensed", sans-serif;
+		text-transform: uppercase;
+		font-size: 28px;
+		text-align: right;
+		letter-spacing: -.4px;
+	}
+}
+
+body.new-ballot, body.view-ballot, body.view-ballots {
+	background-color: $red-base;
+	p, a.inline {
+		color: $red-light-2;
+	}
+	a.inline:hover {
+	    color:$red-dark-3;
+	}
+	a.inline::after {
+	    background:$red-dark-3;
+	}
+	a.button {
+		color: #fff;
+		background-color:$red-base;
+		border: 2px solid white;
+	}
+	a.button:hover {
+		background-color: white;
+		color:#3f786b;
+		border: 2px solid white;
+	}
+	input[type='submit'] {
+		margin-top: 15px;
+		background-color: $red-base;
+		color: $red-light-3; 
+		border: 2px solid $red-light-3;
+	}
+	input[type='submit']:hover {
+		background-color: $red-light-3;
+		color: $red-dark-3; 
+	}
+	input[type='text'], input[type='password'] {
+		text-align: center;
+	    background: $red-light-3;
+	    color: $red-dark-3;
+	}
+	input[type='text']:focus, input[type='password']:focus {
+	    background: $red-light-3;
+	    color: $red-dark-3;
+	}
+}
 
 body.dashboard {
 	background-color: $purple-base;

@@ -22,8 +22,14 @@
 
 <h2>Ballots in <%= @league.league_name %></h2>
 
-<% if @commissioner.leagues.first.ballots.count > 0 %>
-	<p>Some</p>
+<% if @league.ballots.count > 0 %>
+	<% @league.ballots.each do |ballot| %>
+		<% if ballot.player.id != current_user.id %>
+			<p><%= ballot.player.screen_name %> - <%= link_to "Delete", league_ballot_destroy_path(@league.league_path, ballot), class:'inline', method: :delete %></p>
+		<% else %>
+			<p>Your ballot - see above link</p>
+		<% end %>
+	<% end %>
 <% else %>
 	<p>None at the moment... share your link to get some!</p>
 <% end %>

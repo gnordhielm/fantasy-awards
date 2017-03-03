@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  before_action :logged_in?
+  before_action :logged_in?, only: :dashboard
 
   def new
     @league = League.new
@@ -23,9 +23,9 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find_by(league_path: params[:league_path])
-    @ballots = Ballot.where(league_id: params[@league.id])
+    @ballots = Ballot.where(league_id: @league.id)
 
-    @title = @league.league_name
+    @title = "View Ballots"
   end
 
   def dashboard
