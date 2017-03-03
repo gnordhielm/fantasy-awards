@@ -24,14 +24,14 @@ Rails.application.routes.draw do
 
   get  '/start-a-league', to: 'leagues#new', as: :new_league
   post  '/start-a-league', to: 'leagues#create'
-  get  '/:league_id', to: 'leagues#show', as: :league
+  get  '/:league_path', to: 'leagues#show', as: :league
 
-  get  '/dashboard/:league_id', to: 'leagues#dashboard', as: :league_dashboard
+  get  '/dashboard/:league_path', to: 'leagues#dashboard', as: :league_dashboard
 
-  get  '/:league_id/new-ballot',  to: 'ballots#new', as: :league_new_ballot
-  post  '/:league_id/new-ballot', to: 'ballots#create'
+  get  '/:league_path/new-ballot',  to: 'ballots#new', as: :league_new_ballot
+  post  '/:league_path/new-ballot', to: 'ballots#create'
 
-  get  '/:league_id/:ballot_id',  to: 'ballots#show', as: :league_ballot
+  get  '/:league_path/:ballot_id',  to: 'ballots#show', as: :league_ballot
 
   get   '/commissioners/:commissioner_id', to: "commissioners#show", as: 'commissioner'
   get   '/commissioners/edit/:commissioner_id', to: "commissioners#show"

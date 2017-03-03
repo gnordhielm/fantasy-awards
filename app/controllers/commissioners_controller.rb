@@ -32,7 +32,7 @@ class CommissionersController < ApplicationController
       session[:player_id] = @player.id
 
       if @commissioner.save
-        redirect_to new_league_path(@commissioner)
+        redirect_to new_league_path
       else
         flash[:alert] = "Have another go at that email and password for me."
         redirect_to request.referrer

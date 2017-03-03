@@ -2,10 +2,10 @@ class BallotsController < ApplicationController
   
   def new
     if current_user
-      @league = League.find(params[:league_id])
+      @league = League.find_by(league_path: params[:league_path])
       @ballot = Ballot.new
     else
-      @league = League.find(params[:league_id])
+      @league = League.find(league_path: params[:league_path])
       @player = Player.new
       @player.build_ballot
     end
@@ -13,7 +13,7 @@ class BallotsController < ApplicationController
   end
 
   def create
-    @league = League.find(params[:league_id])
+    @league = League.find(league_path: params[:league_path])
     if current_user
       @ballot = Ballot.new(ballot_params)
 
@@ -27,7 +27,7 @@ class BallotsController < ApplicationController
         redirect_to request.referrer
       end
     else
-      @league = League.find(params[:league_id])
+      @league = League.find(league_path: params[:league_path])
       @player = Player.new
 
       @player.first_name = player_ballot_params[:first_name]
@@ -60,7 +60,7 @@ class BallotsController < ApplicationController
   end
 
   def show
-    @league = League.find(params[:league_id])
+    @league = League.find(league_path: params[:league_path])
     @ballot = Ballot.find(params[:ballot_id])
     @title = @ballot.player.screen_name
   end

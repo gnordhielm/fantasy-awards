@@ -1,7 +1,7 @@
 
 <div class="private-link">
 	<p>
-		Your link: <span id="league-link"><%= league_url @league %></span> 
+		Your link: <span id="league-link"><%= league_url @league.league_path %></span> 
 	</p>
 </div>
 <svg class="copy-icon" data-clipboard-target='league-link' id='copy-button' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25">
@@ -9,15 +9,15 @@
 	<rect x="18" y="0" width="6" height="20" transform="translate(43.54 4.7) rotate(142.38)"/>
 </svg>
 <br>
-<%= link_to "Go to league view", league_path(@league), class:'inline' %>
+<%= link_to "Go to league view", league_path(@league.league_path), class:'inline' %>
 <% if @commissioner.designer %>
 	<%= link_to "Designer Dashboard", designer_path, class:'inline' %>
 <% end %>
 
 <% if @commissioner.player.ballot %>
-	<p><%= link_to "Your Ballot", league_ballot_path(@league, @commissioner.player.ballot), class:'inline' %></p>
+	<p><%= link_to "Your Ballot", league_ballot_path(@league.league_path, @commissioner.player.ballot), class:'inline' %></p>
 <% else %>
-	<p><%= link_to "New Ballot", league_new_ballot_path(@league), class:'inline' %></p>
+	<p><%= link_to "New Ballot", league_new_ballot_path(@league.league_path), class:'inline' %></p>
 <% end %>
 
 <h2>Ballots in <%= @league.league_name %></h2>

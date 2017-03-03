@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       # password correct, start session
       session[:player_id] = player.id
       @player = Player.find(session[:player_id])
-      redirect_to league_dashboard_path(@player.commissioner.leagues.first), notice: 'Logged in.'
+      redirect_to league_dashboard_path(@player.commissioner.leagues.first.league_path), notice: 'Logged in.'
     else
       # password incorrect, re-render page
       redirect_to request.referrer, notice: 'Incorrect email or password.'

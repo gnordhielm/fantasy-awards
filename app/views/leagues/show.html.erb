@@ -1,6 +1,6 @@
 <h1><%= @league.league_name %></h1>
 <% if current_user %>
-	<%= link_to "Go to dashboard", league_dashboard_path(@league) %>
+	<%= link_to "Go to dashboard", league_dashboard_path(@league.league_path) %>
 <% end %>
 <hr>
 
@@ -9,6 +9,6 @@
 	<li><%= link_to ballot.player.screen_name, [ballot.league, ballot] %></li>
 <% end %>
 <% if !current_user %>
-	<li><%= link_to "New Ballot", league_new_ballot_path(@league) %></li>
+	<li><%= link_to "New Ballot", league_new_ballot_path(@league.league_path) %></li>
 <% end %>
 </ul>
