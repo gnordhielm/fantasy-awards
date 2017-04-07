@@ -1,4 +1,4 @@
-#Fantasy Oscars
+# Fantasy Oscars
 >In this brief note directly under the title, I would like to acknowledge the relative frivolity of this project. Since it's a frivolity I'll be engaged with regardless of my excuse, I'm going to commit myself to making this Rails implementation as robust and delightful as possible. At the very least, it'll bring down the net time I devote, annually, to making a fantasy sports game out of the Oscars...
 
 ## Instructor Review
