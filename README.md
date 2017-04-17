@@ -1,19 +1,11 @@
 # Fantasy Oscars
 >In this brief note directly under the title, I would like to acknowledge the relative frivolity of this project. Since it's a frivolity I'll be engaged with regardless of my excuse, I'm going to commit myself to making this Rails implementation as robust and delightful as possible. At the very least, it'll bring down the net time I devote, annually, to making a fantasy sports game out of the Oscars...
 
-## Instructor Review
-
-Hello, valued instructor! To speed up your review of my app, here's a bit of a roadmap you can follow.
-
-There are three different kinds of users in the app: players (not authenticated), commissioners (authenticated, but lacking some administrative power), and designers (authenticated, all-powerful). 
-
-Once you've tried making an account the normal way and seeing what you can do, I recommend logging in as a designer with the following credentials: `email: sudo@ga.co, password: password`. Visit `/designer-dashboard` once logged in, as there's some important functionality there that you can't get to in other ways. 
-
-Here's a link to my Trello Board:
+A link to my Trello Board:
 
 [Trello](https://trello.com/b/imfbPujC/fantasy-oscars)
 
-And a copy of my ERD:
+A copy of my ERD:
 
 ![erd](readme_assets/erd.jpg)
 
