@@ -46,6 +46,20 @@ module.exports = env => {
         })
       }]
     },
+    resolve: {
+      alias: {
+        actions: path.resolve(__dirname, 'src/actions'),
+        components: path.resolve(__dirname, 'src/components'),
+        pages: path.resolve(__dirname, 'src/pages'),
+        reducers: path.resolve(__dirname, 'src/reducers'),
+        routers: path.resolve(__dirname, 'src/routers'),
+        selectors: path.resolve(__dirname, 'src/selectors'),
+        config: path.resolve(__dirname, 'src/config'),
+        styles: path.resolve(__dirname, 'src/styles'),
+        test: path.resolve(__dirname, 'src/test')
+      },
+      extensions: ['.js', '.jsx']
+    },
     plugins: [
       cssExtract,
       new webpack.DefinePlugin({

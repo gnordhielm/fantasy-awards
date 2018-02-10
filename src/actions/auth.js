@@ -1,7 +1,7 @@
 
 import {
   firebase, googleAuthProvider
-} from '../firebase/firebase'
+} from 'config/firebase'
 
 export const login = uid => ({
   type: 'LOGIN',

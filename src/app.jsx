@@ -1,13 +1,13 @@
 import 'normalize.css/normalize.css'
-import './styles/styles.scss'
-import { firebase } from './firebase/firebase'
+import 'styles/styles.scss'
+import { firebase } from 'config/firebase'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import AppRouter, { history } from './routers/AppRouter.jsx'
-import configureStore from './store/configureStore'
-import { login, logout } from './actions/auth'
-import LoadingPage from './components/LoadingPage.jsx'
+import AppRouter, { history } from 'routers/AppRouter.jsx'
+import configureStore from 'config/configureStore'
+import { login, logout } from 'actions/auth'
+import LoadingPage from 'pages/LoadingPage.jsx'
 
 const store = configureStore()
 
