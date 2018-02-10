@@ -5,12 +5,16 @@ import { startLogin } from '../actions/auth'
 export const LoginPage = ({ login }) => (
   <div className="box-layout">
     <div className="box-layout__box">
-      <h1 className="box-layout__title">Boilerplate</h1>
+      <h1 className="box-layout__title">Fantasy Awards</h1>
       <p>Tagline.</p>
       <button
         className="button"
         onClick={login}
-      >Log In With Google</button>
+      >Log In With Facebook</button>
+      <button
+        className="button"
+        onClick={login}
+      >Log In With Your Phone Number</button>
     </div>
   </div>
 )
