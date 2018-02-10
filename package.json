@@ -1,6 +1,6 @@
 {
-  "name": "react-boilerplate",
-  "version": "1.0.0",
+  "name": "fantasy-awards",
+  "version": "2.0.0",
   "author": "Gus Nordhielm",
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "heroku-postbuild": "yarn run build:dist",
     "dist": "webpack",
     "dev": "webpack-dev-server",
-    "test": "cross-env NODE_ENV=test jest --config=jest.config.json --watch"
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.json"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
