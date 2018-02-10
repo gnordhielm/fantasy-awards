@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  & > input, & > textarea {
+    margin-bottom: $m-size;
+  }
+}
+
+.form__error {
+  margin: 0 0 $m-size;
+  font-style: italic;
+}
+
+.form .button {
+  margin-bottom: $s-size;
+  
+}
