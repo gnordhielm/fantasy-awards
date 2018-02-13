@@ -22,29 +22,38 @@ module.exports = env => {
       filename: 'bundle.js'
     },
     module: {
-      rules: [{
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }, {
-        test: /\.s?css$/,
-        use: cssExtract.extract({
+      rules: [
+        {
+          test: /\.jsx?$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.s?css$/,
+          use: cssExtract.extract({
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          })
+        },
+        {
+          test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
           use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
-            }
+            'file-loader'
           ]
-        })
-      }]
+        }
+      ]
     },
     resolve: {
       alias: {

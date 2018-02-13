@@ -10,7 +10,7 @@ export const LoginPage = ({ login }) => (
       <button
         className="button"
         onClick={login}
-      >Log In With Facebook</button>
+      >Log In With Facebook <i className="icon facebook"></i></button>
       <button
         className="button"
         onClick={login}

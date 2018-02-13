@@ -18,3 +18,32 @@
 .button--secondary {
   background: $gray;
 }
+
+
+a.button {
+	text-align: center;
+	font-family:$body-font;
+	font-size:16px;
+	font-weight: 300;
+	text-decoration: none;
+	text-shadow: none;
+	padding: 10px;
+	display: block;
+	width: 140px;
+	margin:40px auto 50px;
+}
+
+/* Button-style links */
+
+a.button {
+	text-align: center;
+	font-family:$body-font;
+	font-size:16px;
+	font-weight: 300;
+	text-decoration: none;
+	text-shadow: none;
+	padding: 10px;
+	display: block;
+	width: 140px;
+	margin:60px auto 60px;
+}
