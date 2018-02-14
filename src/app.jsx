@@ -1,5 +1,7 @@
+import 'semantic-ui-icon/icon.css'
 import 'normalize.css/normalize.css'
 import 'styles/styles.scss'
+
 import { firebase } from 'config/firebase'
 import React from 'react'
 import ReactDOM from 'react-dom'
