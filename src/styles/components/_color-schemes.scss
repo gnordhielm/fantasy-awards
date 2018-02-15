@@ -1,0 +1,27 @@
+
+.orange-scheme {
+  background: $orange-base;
+
+  p, a.inline {
+    color: $orange-light-2;
+  }
+
+  a.inline:hover, a.inline:focus {
+      color: $orange-dark-3;
+  }
+
+  a.inline::after {
+      background: $orange-dark-3;
+  }
+
+  .button {
+    color: $lightest;
+    background-color:$orange-base;
+    border: 2px solid $lightest;
+  }
+
+
+  p {
+    color: $orange-light-2;
+  }
+}

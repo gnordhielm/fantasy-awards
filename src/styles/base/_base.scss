@@ -1,9 +1,12 @@
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
@@ -11,6 +14,11 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
   line-height: 1.6;
+  height: 100%;
+}
+
+div#app {
+  height: 100%;
 }
 
 button {
@@ -30,17 +38,18 @@ $header-font: "Roboto Condensed", sans-serif;
 $body-font: "Poppins", sans-serif;
 
 h1 {
-	color: #fff;
+	color: $lightest;
 	font-family: $header-font;
 	text-transform: uppercase;
 	font-size: 50px;
 	text-align: right;
-	letter-spacing: .5px;
+	letter-spacing: 0.5px;
 	margin: 0;
+  line-height: 1;
 }
 
 h2 {
-	color:#fff;
+	color: $lightest;
 	font-family: $header-font;
 	font-size:30px;
 	display: inline-block;
@@ -65,9 +74,8 @@ small {
 
 /* Structure and Common Elements */
 * {
-	-webkit-transition: all .35s;
-	-moz-transition: all .35s;
-	transition: all .35s;
+
+	// transition: all .35s;
 }
 .wrapper {
 	width: 500px;

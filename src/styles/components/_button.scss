@@ -1,15 +1,15 @@
-.button {
-  background: $blue;
-  border: none;
-  outline: none;
-  color: white;
-  display: inline-block;
-  text-decoration: none;
-  line-height: 1;
-  padding: $s-size;
-  font-weight: 300;
-  font-size: $font-size-large;
-}
+// .button {
+//   background: $blue;
+//   border: none;
+//   outline: none;
+//   color: white;
+//   display: inline-block;
+//   text-decoration: none;
+//   line-height: 1;
+//   padding: $s-size;
+//   font-weight: 300;
+//   font-size: $font-size-large;
+// }
 
 .button--link {
   background: none;
@@ -20,22 +20,9 @@
 }
 
 
-a.button {
-	text-align: center;
-	font-family:$body-font;
-	font-size:16px;
-	font-weight: 300;
-	text-decoration: none;
-	text-shadow: none;
-	padding: 10px;
-	display: block;
-	width: 140px;
-	margin:40px auto 50px;
-}
-
 /* Button-style links */
 
-a.button {
+.button {
 	text-align: center;
 	font-family:$body-font;
 	font-size:16px;
@@ -46,4 +33,18 @@ a.button {
 	display: block;
 	width: 140px;
 	margin:60px auto 60px;
+
+  &.teal {
+    background: $teal-base;
+
+    &:hover {
+      background: $lightest;
+      color: $teal-base;
+    }
+  }
+
+  transition:
+    background 250ms ease-in-out,
+    color 250ms ease-in-out;
+
 }
