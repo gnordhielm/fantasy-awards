@@ -1,8 +1,9 @@
 
 .orange-scheme {
   background: $orange-base;
+  color: $orange-light-2;
 
-  p, a.inline {
+  a.inline {
     color: $orange-light-2;
   }
 
@@ -21,7 +22,22 @@
   }
 
 
-  p {
-    color: $orange-light-2;
+  &.dark, & > .dark {
+    background: $orange-dark-3;
+    // color: $orange-light-2;
+
+    a.inline {
+      // color: $orange-dark-1;
+    }
+
+    a.inline:hover, a.inline:focus {
+        color: $orange-light-2;
+    }
+
+    a.inline::after {
+        background: $orange-light-2;
+    }
+
+
   }
 }

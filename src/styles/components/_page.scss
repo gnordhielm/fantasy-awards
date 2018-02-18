@@ -1,5 +1,12 @@
 
 .page {
   height: 100%;
-  padding: 1rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.page__content {
+  padding: $s-size $m-size;
+  flex: 1;
 }

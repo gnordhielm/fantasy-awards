@@ -1,31 +1,10 @@
-// .button {
-//   background: $blue;
-//   border: none;
-//   outline: none;
-//   color: white;
-//   display: inline-block;
-//   text-decoration: none;
-//   line-height: 1;
-//   padding: $s-size;
-//   font-weight: 300;
-//   font-size: $font-size-large;
-// }
-
-.button--link {
-  background: none;
-}
-
-.button--secondary {
-  background: $gray;
-}
-
 
 /* Button-style links */
 
 .button {
 	text-align: center;
-	font-family:$body-font;
-	font-size:16px;
+	font-family: $body-font;
+	font-size: 16px;
 	font-weight: 300;
 	text-decoration: none;
 	text-shadow: none;
@@ -46,5 +25,12 @@
   transition:
     background 250ms ease-in-out,
     color 250ms ease-in-out;
+
+}
+
+.button--block {
+  width: 100%;
+  margin: $s-size auto;
+
 
 }
