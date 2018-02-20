@@ -1,26 +1,35 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startLogin } from '../actions/auth'
+import { startFacebookLogin } from '../actions/auth'
+import { Link } from 'react-router-dom'
 
 export const LoginPage = ({ login }) => (
-  <div className="box-layout">
-    <div className="box-layout__box">
-      <h1 className="box-layout__title">Fantasy Awards</h1>
-      <p>Tagline.</p>
+  <div className="orange-scheme page">
+    <header className="header">
+      <h1 className="header__title">
+        Fantasy Awards
+      </h1>
+    </header>
+    <div className="page__content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam est harum quo alias voluptatibus! Placeat blanditiis sed modi quos atque!</p>
       <button
-        className="button"
+        className="button button--block teal"
         onClick={login}
-      >Log In With Facebook <i className="icon facebook"></i></button>
-      <button
-        className="button"
-        onClick={login}
-      >Log In With Your Phone Number</button>
+      >
+        Log in with Facebook
+      </button>
+
+      <p>
+        Or with your <a className="inline" href="#">phone number</a>
+      </p>
+
     </div>
+
   </div>
 )
 
 const mapDispatch = dispatch => ({
-  login: () => dispatch(startLogin())
+  login: () => dispatch(startFacebookLogin())
 })
 
 export default connect(null, mapDispatch)(LoginPage)

@@ -35,6 +35,7 @@ ReactDOM.render(
 firebase.auth().onAuthStateChanged(user => {
   if (user)
   {
+    console.log('logged in', user)
     store.dispatch(login(user.uid))
     renderApp()
     if (history.location.pathname === '/')

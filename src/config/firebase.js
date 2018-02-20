@@ -13,6 +13,12 @@ firebase.initializeApp(config)
 
 const database = firebase.database()
 
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+const facebookAuthProvider = new firebase.auth.FacebookAuthProvider()
+// facebookAuthProvider.addScope('email')
+// facebookAuthProvider.addScope('user_profile')
 
-export { firebase, googleAuthProvider, database as default }
+export {
+  database as default,
+  firebase,
+  facebookAuthProvider,
+}

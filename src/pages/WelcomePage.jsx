@@ -7,22 +7,19 @@ export const LoginPage = props => (
   <div className="orange-scheme page">
     <header className="header">
       <h1 className="header__title">
-        Fantasy Oscars
+        Fantasy Awards
       </h1>
     </header>
     <div className="page__content">
-
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam est harum quo alias voluptatibus! Placeat blanditiis sed modi quos atque!</p>
       <button className="button button--block teal">
-        Sign up with Facebook
+        Log in with Facebook
       </button>
 
       <p>
         Or with your <a className="inline" href="#">phone number</a>
       </p>
 
-      <p>
-        Already signed up? <Link to="/" className="inline">Sign in</Link>.
-      </p>
     </div>
 
   </div>
