@@ -6,11 +6,13 @@ $purple-dark-3: #331c3a;
 $purple-dark-2: #3c2244;
 $purple-dark-1: #3c2244;
 $purple-base: #55315d;
+$purple: $purple-base;
 $purple-light-1: #c49ace;
 $purple-light-2: #c49ace;
 $purple-light-3: #e0bfea;
 
 $orange-base: #d75d27;
+$orange: $orange-base;
 
 $orange-dark-4: darken(saturate($orange-base, 2.87), 27);
 $orange-dark-3: darken(saturate(adjust-hue($orange-base, -2), 2.87), 13.53);

@@ -1,8 +1,13 @@
 import React from 'react'
+import ReactLoading from 'react-loading'
 
 const LoadingPage = props => (
-  <div className="loader">
-    <img className="loader__image" src="/assets/loader.gif" alt=""/>
+  <div className="loading-page">
+    <ReactLoading
+      color="#000"
+      type="bubbles"
+      className="loader"
+    />
   </div>
 )
 
