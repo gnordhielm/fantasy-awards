@@ -7,7 +7,7 @@ export const LoginPage = ({ login }) => (
   <div className="orange-scheme page">
     <header className="header">
       <h1 className="header__title">
-        Fantasy Awards
+        Fantasy Film Awards
       </h1>
     </header>
     <div className="page__content">
@@ -20,7 +20,10 @@ export const LoginPage = ({ login }) => (
       </button>
 
       <p>
-        Or with your <a className="inline" href="#">phone number</a>
+        Or with your <Link
+          className="inline"
+          to="/phone-auth"
+        >phone number</Link>
       </p>
 
     </div>

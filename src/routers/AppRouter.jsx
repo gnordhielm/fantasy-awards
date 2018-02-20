@@ -3,6 +3,7 @@ import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 import LoginPage from 'pages/LoginPage.jsx'
+import PhoneLoginPage from 'pages/PhoneLoginPage.jsx'
 import DashboardPage from 'pages/DashboardPage.jsx'
 import NotFoundPage from 'pages/NotFoundPage.jsx'
 import PrivateRoute from 'routers/PrivateRoute.jsx'
@@ -15,7 +16,9 @@ const AppRouter = () => (
     <Switch>
 
       <PublicRoute exact path="/" component={LoginPage} />
-      <PrivateRoute path="/test" component={NotFoundPage} />
+      <PublicRoute path="/phone-auth" component={PhoneLoginPage} />
+
+      {/* <PrivateRoute path="/test" component={NotFoundPage} /> */}
       {/* <Route path="/join/:leagueId" component={WelcomePage} /> */}
 
       <PrivateRoute path="/dashboard" component={DashboardPage} />

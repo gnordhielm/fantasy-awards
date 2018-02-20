@@ -57,6 +57,8 @@ module.exports = env => {
     },
     resolve: {
       alias: {
+        settings: path.resolve(__dirname, 'src/config/settings.js'),
+
         actions: path.resolve(__dirname, 'src/actions'),
         components: path.resolve(__dirname, 'src/components'),
         pages: path.resolve(__dirname, 'src/pages'),
