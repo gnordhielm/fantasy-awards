@@ -37,10 +37,14 @@ class PhoneLogin extends React.Component {
   }
 
   handleSubmitNumber = e => {
-    const number = "+1" + this.state.phoneNumber
+    this.setState(() => ({ error: null }))
+
+    const number = "+1" + this.state.phoneNumber.replace(/[\s\-\(\)]/g, '')
+
     const verifier = window.recaptchaVerifier
     firebase.auth().signInWithPhoneNumber(number, verifier)
       .then(confirmer => {
+
         console.log('code sent!')
         this.confirmer = confirmer
         this.setState(() => ({
@@ -49,6 +53,9 @@ class PhoneLogin extends React.Component {
       })
       .catch(err => {
         console.log('phone sign in error', err)
+        this.setState(() => ({
+          error: 'Could not send a message to the number provided.'
+        }))
       })
   }
 
@@ -58,6 +65,7 @@ class PhoneLogin extends React.Component {
   }
 
   handleSubmitConfirmation = () => {
+    this.setState(() => ({ error: null }))
     const code = this.state.confirmationCode
     this.confirmer.confirm(code)
       .then(res => {
@@ -65,6 +73,9 @@ class PhoneLogin extends React.Component {
       })
       .catch(err => {
         console.log('confirmation error', err)
+        this.setState(() => ({
+          error: 'Error validating confirmation code.'
+        }))
       })
 
   }
@@ -74,6 +85,8 @@ class PhoneLogin extends React.Component {
     if (this.state.messageSent)
       return (
           <div>
+            {!!this.state.error && <p>{this.state.error}</p>}
+            <label>Confirmation code</label>
             <input
               type="text"
               value={this.state.confirmationCode}
@@ -87,6 +100,9 @@ class PhoneLogin extends React.Component {
 
     return (
       <div>
+        {!!this.state.error && <p>{this.state.error}</p>}
+        <label>Phone Number</label>
+        <label>+1</label>
         <input
           type="text"
           value={this.state.phoneNumber}
@@ -97,6 +113,7 @@ class PhoneLogin extends React.Component {
           onClick={this.handleSubmitNumber}
         >Submit</button>
 
+        <small>Only US numbers can be used for authentication.</small>
         <small>On submission, an SMS may be sent. Message and data rates may apply.</small>
       </div>
     )
