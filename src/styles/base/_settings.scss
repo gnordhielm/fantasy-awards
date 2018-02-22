@@ -2,14 +2,21 @@
 
 $lightest: #fff;
 
-$purple-dark-3: #331c3a;
-$purple-dark-2: #3c2244;
-$purple-dark-1: #3c2244;
-$purple-base: #55315d;
+$purple-base: #55315c;
 $purple: $purple-base;
-$purple-light-1: #c49ace;
-$purple-light-2: #c49ace;
-$purple-light-3: #e0bfea;
+// $purple-dark-3: #331c3a;
+// $purple-dark-2: #3c2244;
+// $purple-dark-1: #3c2244;
+// $purple-light-1: #c49ace;
+// $purple-light-2: #c49ace;
+// $purple-light-3: #e0bfea;
+$purple-dark-4: darken(saturate($purple-base, 2.87), 10);
+$purple-dark-3: darken(saturate(adjust-hue($purple-base, -2), 5), 13.53);
+$purple-dark-2: darken(adjust-hue($purple-base, -1), 8.24);
+$purple-dark-1: darken(desaturate($purple-base, 0.21), 2.94);
+
+$purple-light-1: lighten(saturate(adjust-hue($purple-base, 2), 2), 12.75);
+$purple-light-2: lighten(saturate(adjust-hue($purple-base, 3), 5), 37.06);
 
 $orange-base: #d75d27;
 $orange: $orange-base;
@@ -33,7 +40,7 @@ $teal-light-3: #a9ded2;
 $red-dark-3: #6a1b13;
 $red-dark-2: #7f2117;
 $red-dark-1: #7f2117;
-$red-base: #9a2c22;
+$red-base: #ad2f2f;
 $red-light-1: #f89b8c;
 $red-light-2: #f89b8c;
 $red-light-3: #f89b8c;

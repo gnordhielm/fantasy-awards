@@ -2,12 +2,12 @@
 import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
-import LoginPage from 'pages/LoginPage.jsx'
-import PhoneLoginPage from 'pages/PhoneLoginPage.jsx'
-import DashboardPage from 'pages/DashboardPage.jsx'
-import NotFoundPage from 'pages/NotFoundPage.jsx'
-import PrivateRoute from 'routers/PrivateRoute.jsx'
-import PublicRoute from 'routers/PublicRoute.jsx'
+import LoginPage from 'pages/LoginPage'
+import PhoneLoginPage from 'pages/PhoneLoginPage'
+import DashboardPage from 'pages/DashboardPage'
+import NotFoundPage from 'pages/NotFoundPage'
+import PrivateRoute from 'routers/PrivateRoute'
+import PublicRoute from 'routers/PublicRoute'
 
 export const history = createHistory()
 

@@ -2,7 +2,7 @@ import 'semantic-ui-icon/icon.css'
 import 'normalize.css/normalize.css'
 import 'styles/styles.scss'
 
-import { firebase } from 'config/firebase'
+import db, { firebase } from 'config/firebase'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -35,13 +35,21 @@ ReactDOM.render(
 firebase.auth().onAuthStateChanged(user => {
   if (user)
   {
-    console.log('logged in', user)
-    store.dispatch(login(user.uid))
-    renderApp()
-    if (history.location.pathname === '/')
-    {
-      history.push('/dashboard')
-    }
+    db.ref(`users/${user.uid}`)
+      .once('value')
+      .then(snap => {
+        store.dispatch(login({
+          uid: user.uid,
+          ...snap.val()
+        }))
+
+        renderApp()
+
+        if (history.location.pathname === '/')
+        {
+          history.push('/dashboard')
+        }
+      })
   }
   else
   {

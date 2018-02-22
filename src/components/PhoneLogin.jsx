@@ -45,7 +45,7 @@ class PhoneLogin extends React.Component {
     firebase.auth().signInWithPhoneNumber(number, verifier)
       .then(confirmer => {
 
-        console.log('code sent!')
+        // console.log('code sent!')
         this.confirmer = confirmer
         this.setState(() => ({
           messageSent: true,
@@ -69,7 +69,7 @@ class PhoneLogin extends React.Component {
     const code = this.state.confirmationCode
     this.confirmer.confirm(code)
       .then(res => {
-        console.log('confirmation success!', res.user)
+        // console.log('confirmation success!', res.user)
       })
       .catch(err => {
         console.log('confirmation error', err)
@@ -87,11 +87,13 @@ class PhoneLogin extends React.Component {
           <div>
             {!!this.state.error && <p>{this.state.error}</p>}
             <label>Confirmation code</label>
-            <input
-              type="text"
-              value={this.state.confirmationCode}
-              onChange={this.handleConfirmationChange}
-            />
+            <div>
+              <input
+                type="text"
+                value={this.state.confirmationCode}
+                onChange={this.handleConfirmationChange}
+              />
+            </div>
             <button
               onClick={this.handleSubmitConfirmation}
             >Submit</button>
@@ -102,12 +104,14 @@ class PhoneLogin extends React.Component {
       <div>
         {!!this.state.error && <p>{this.state.error}</p>}
         <label>Phone Number</label>
-        <label>+1</label>
-        <input
-          type="text"
-          value={this.state.phoneNumber}
-          onChange={this.handlePhoneNumberChange}
-        />
+        <div>
+          <label>+1</label>
+          <input
+            type="text"
+            value={this.state.phoneNumber}
+            onChange={this.handlePhoneNumberChange}
+          />
+        </div>
         <button
           id={recaptchaTargetId}
           onClick={this.handleSubmitNumber}

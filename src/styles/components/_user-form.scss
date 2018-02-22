@@ -1,0 +1,7 @@
+.user-form {
+  .color-picker {
+    &.active {
+      border-bottom: 2px solid $lightest;
+    }
+  }
+}
