@@ -1,24 +1,31 @@
 export const nominationsByFilm = nominations => {
 
-  const nominationTotals = {}
+  const result = {}
 
-  for (let key in nominations)
+  for (let category in nominations)
   {
-    const category = nominations[key]
-    category.forEach(({ film }) => {
-      nominationTotals[film] = nominationTotals[film] === undefined ?
-        0 : (nominationTotals[film] + 1)
+    const nominees = nominations[category]
+    nominees.forEach(({ film, recipients }) => {
+      if (!result[film])
+        result[film] = []
+
+      result[film] = [
+        ...result[film],
+        {
+          category,
+          recipients: recipients
+        }
+      ]
+
     })
   }
 
-  const films = Object
-    .keys(nominationTotals)
-    .sort((a, b) => {
-      return nominationTotals[b] - nominationTotals[a]
-    })
+  const sortedKeys = Object
+    .keys(result)
+    .sort((a, b) => result[b].length - result[a].length)
 
-  return films.map(film => ({
-    film, totalNominations: nominationTotals[film]
+  return sortedKeys.map(film => ({
+    film, nominations: result[film]
   }))
 
 }

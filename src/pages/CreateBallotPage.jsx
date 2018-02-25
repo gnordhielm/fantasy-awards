@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { cloneDeep} from 'lodash'
 import BallotModel from 'models/Ballot'
 
 import BallotBasicsForm from 'components/BallotBasicsForm'
@@ -18,9 +18,9 @@ class CreateBallotPage extends React.Component {
   state = {
     activeForm: null,
 
-    activeForm: 'EXTRAS',
+    // activeForm: 'EXTRAS',
     activeForm: 'BIG_ONE',
-    activeForm: 'BASICS',
+    // activeForm: 'BASICS',
 
     ballot: new BallotModel()
   }
@@ -30,10 +30,11 @@ class CreateBallotPage extends React.Component {
   }
 
   handleBallotChange = changes => {
-    console.log('handleBallotChange', changes)
+
     this.setState(prevState => ({
       ballot: prevState.ballot.update(changes)
     }))
+
   }
 
   handleCreate = () => {

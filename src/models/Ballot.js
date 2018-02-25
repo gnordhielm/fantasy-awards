@@ -9,30 +9,49 @@ basicCategories.forEach(category => {
     basicsSchema[category][i] = 0
 })
 
+const bigOneCheckers = {
+  PICTURE: _ => _,
+  EVERY_WIN: _ => _
+}
+
 class Ballot {
 
-  constructor() {
-    this.basics = {
-      ...basicsSchema
-    }
+  basics = {
+    ...basicsSchema
+  }
+
+  bigOne = {
+    film: null,
+    // one of PICTURE or EVERY_WIN
+    pointsOn: 'PICTURE'
+
+  }
+
+  extras = {
+
   }
 
   update = (changes={}) => {
-    const result = cloneDeep(this)
 
+    const result = cloneDeep(this)
+    // console.log('update');
+    // console.log(this)
+    // console.log(this.basics)
+    // console.log(this.basics.DIRECTING)
+    // console.log('---');
+    // console.log('changes', changes);
     for (let key in changes)
     {
+      // console.log('changesKey', key);
       if (key === 'basics')
       {
-        // const finalBasics = {
-        //   ...result.basics
-        // }
-        //
-        // for (l)
-
-        result.basics = {
-          ...result.basics,
-          ...changes.basics
+        for (let basicKey in changes.basics)
+        {
+          result.basics[basicKey] = {
+            ...result.basics[basicKey],
+            ...changes.basics[basicKey],
+          }
+          // console.log("result.basics",result.basics);
         }
       }
       else
@@ -40,7 +59,13 @@ class Ballot {
         result[key] = changes[key]
       }
     }
-console.log('change result', result.basics)
+
+    // console.log('result');
+    // console.log(result)
+    // console.log(result.basics)
+    // console.log(result.basics.DIRECTING)
+    // console.log('---');
+    // console.log('---');
     return result
   }
 

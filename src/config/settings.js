@@ -6,7 +6,9 @@ export const maxHandleLength = 20
 
 export const mostNominationsMin = 5
 export const mostNominations = nominationsByFilm(nominees)
-  .filter(({ total }) => total >= mostNominationsMin)
+  .filter(({ nominations }) => nominations.length >= mostNominationsMin)
+
+console.log(mostNominations);
 
 export const basicCategories = [
   "DIRECTING",
@@ -24,3 +26,5 @@ export const basicCategories = [
 // Points
 
 export const basicCategoryPoints = 100
+export const bigOneEveryWinPoints = 100
+export const bigOnePicturePoints = 700

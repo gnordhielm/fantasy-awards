@@ -13,6 +13,12 @@ class BallotBasicsForm extends React.Component {
     activeCategoryIdx: 0
   }
 
+  // componentWillReceiveProps(newProps) {
+  //   console.log('incoming props');
+  //   console.log(newProps.ballot.basics)
+  //   console.log(newProps.ballot.basics.DIRECTING)
+  // }
+
   handlePageBack = () => {
     this.setState(prevState => ({
       activeCategoryIdx: prevState.activeCategoryIdx - 1
@@ -32,7 +38,7 @@ class BallotBasicsForm extends React.Component {
     // DEV - extra math to fix JS's fucked up decimal addition
     changes[category][idx] = Math.round((newValue) * 100) / 100
 
-    this.props.onChange({ basics: changes})
+    this.props.onChange({ basics: changes })
   }
 
   renderNominee = ({ idx, nominee, value, onChange }) => (

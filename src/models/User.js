@@ -1,10 +1,8 @@
 
 class User {
 
-  constructor() {
-    this.fullName = ''
-    this.handle = ''
-  }
+  fullName = ''
+  handle = ''
 
 }
 
