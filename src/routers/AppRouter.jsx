@@ -5,6 +5,7 @@ import createHistory from 'history/createBrowserHistory'
 import LoginPage from 'pages/LoginPage'
 import PhoneLoginPage from 'pages/PhoneLoginPage'
 import DashboardPage from 'pages/DashboardPage'
+import CreateBallotPage from 'pages/CreateBallotPage'
 import NotFoundPage from 'pages/NotFoundPage'
 import PrivateRoute from 'routers/PrivateRoute'
 import PublicRoute from 'routers/PublicRoute'
@@ -22,6 +23,8 @@ const AppRouter = () => (
       {/* <Route path="/join/:leagueId" component={WelcomePage} /> */}
 
       <PrivateRoute path="/dashboard" component={DashboardPage} />
+      <PrivateRoute path="/new-ballot" component={CreateBallotPage} />
+
       <Route component={NotFoundPage} />
     </Switch>
   </Router>

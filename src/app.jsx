@@ -1,4 +1,5 @@
 import 'semantic-ui-icon/icon.css'
+import 'react-rangeslider/lib/index.css'
 import 'normalize.css/normalize.css'
 import 'styles/styles.scss'
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import db, { firebase } from 'config/firebase'
-import Avatar from 'components/Avatar'
 import { maxHandleLength, avatarColorOptions } from 'settings'
 import { login } from 'actions/auth'
 import { connect } from 'react-redux'
@@ -16,8 +15,7 @@ class CompleteProfilePage extends React.Component {
     fullName: '',
     handle: '',
     error: '',
-    movie: undefined,
-    color: avatarColorOptions[0]
+    movie: undefined
   }
 
   componentWillMount() {
@@ -37,7 +35,7 @@ class CompleteProfilePage extends React.Component {
 
   handleHandleChange = e => {
     console.log('handle handle change')
-    let handle = e.target.value
+    const handle = e.target.value
       .slice(0, maxHandleLength)
       .replace(/\s/g, '')
 
@@ -53,7 +51,7 @@ class CompleteProfilePage extends React.Component {
 
     this.setState(() => ({ error: '' }))
 
-    const { fullName, handle, color, uid } = this.state
+    const { fullName, handle, uid } = this.state
 
     // validate handle uniqueness
     return db.ref(`users`)
@@ -76,7 +74,7 @@ class CompleteProfilePage extends React.Component {
         }
 
         return db.ref(`users/${uid}`)
-          .update({ fullName, handle, color })
+          .update({ fullName, handle })
 
       })
       .then(() => {
@@ -90,9 +88,6 @@ class CompleteProfilePage extends React.Component {
       .catch(err => {
         console.log('err', err)
       })
-
-
-
 
   }
 
@@ -121,25 +116,6 @@ class CompleteProfilePage extends React.Component {
               onChange={this.handleHandleChange}
             />
             <small>Max {maxHandleLength} characters, no whitespace.</small>
-          </div>
-          <div>
-            <p>Avatar Color</p>
-            <div>
-              {avatarColorOptions.map(color => (
-                <div
-                  key={color}
-                  onClick={() => this.handleColorChange(color)}
-                  className={`color-picker ${
-                    this.state.color === color ? 'active' : ''
-                  }`}
-                >
-                  <Avatar
-                    color={color}
-                    movie={this.state.movie}
-                  />
-                </div>
-              ))}
-            </div>
           </div>
           <button onClick={this.handleSubmit}>
             Submit

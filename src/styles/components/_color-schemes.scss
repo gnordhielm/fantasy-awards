@@ -6,7 +6,7 @@
   background: $teal-base;
 }
 
-.red {  
+.red {
   background: $red-base;
 }
 
@@ -92,6 +92,51 @@
 
     a.inline::after {
         background: $purple-light-2;
+    }
+
+
+  }
+}
+
+
+
+.teal-scheme {
+  background: $teal-base;
+  color: $teal-light-2;
+
+  a.inline {
+    color: $teal-light-2;
+  }
+
+  a.inline:hover, a.inline:focus {
+      color: $teal-dark-3;
+  }
+
+  a.inline::after {
+      background: $teal-dark-3;
+  }
+
+  .button {
+    color: $lightest;
+    background-color:$teal-base;
+    border: 2px solid $lightest;
+  }
+
+
+  &.dark, & > .dark {
+    background: $teal-dark-3;
+    // color: $teal-light-2;
+
+    a.inline {
+      // color: $teal-dark-1;
+    }
+
+    a.inline:hover, a.inline:focus {
+        color: $teal-light-2;
+    }
+
+    a.inline::after {
+        background: $teal-light-2;
     }
 
 

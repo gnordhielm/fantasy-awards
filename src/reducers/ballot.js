@@ -1,17 +1,14 @@
 
 const initialState = {
-  uid: null,
-  fullName: '',
-  handle: ''
 }
 
 export default (state=initialState, action) => {
   switch(action.type)
   {
     case 'LOGIN':
+    // add user ballot
       return {
-        ...state,
-        ...action.user
+        ...state
       }
     case 'LOGOUT':
       return {
