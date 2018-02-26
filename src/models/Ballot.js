@@ -31,42 +31,32 @@ class Ballot {
 
   }
 
+
   update = (changes={}) => {
 
-    const result = cloneDeep(this)
-    // console.log('update');
-    // console.log(this)
-    // console.log(this.basics)
-    // console.log(this.basics.DIRECTING)
-    // console.log('---');
-    // console.log('changes', changes);
     for (let key in changes)
     {
-      // console.log('changesKey', key);
       if (key === 'basics')
       {
         for (let basicKey in changes.basics)
         {
-          result.basics[basicKey] = {
-            ...result.basics[basicKey],
+          // make room for the change
+          // if the change fits, just put it in
+          // otherwise, subtract what you can from the last non-change
+          // field
+          this.basics[basicKey] = {
+            ...this.basics[basicKey],
             ...changes.basics[basicKey],
           }
-          // console.log("result.basics",result.basics);
         }
       }
       else
       {
-        result[key] = changes[key]
+        this[key] = changes[key]
       }
     }
 
-    // console.log('result');
-    // console.log(result)
-    // console.log(result.basics)
-    // console.log(result.basics.DIRECTING)
-    // console.log('---');
-    // console.log('---');
-    return result
+    return cloneDeep(this)
   }
 
   validBasics = () => {
@@ -91,6 +81,19 @@ class Ballot {
 
   valid = () => false
 
-}
+  encode = () => JSON.stringify(this)
 
+  decode = encodedBallot => {
+      try
+      {
+        return JSON.parse(encodedBallot)
+      }
+      catch (err)
+      {
+        return this
+      }
+  }
+
+}
+window.Ballot = Ballot
 export default Ballot

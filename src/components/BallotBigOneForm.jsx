@@ -53,7 +53,7 @@ class BallotBigOneForm extends React.Component {
     )
   }
 
-  renderEveryWinSelect = () => {
+  renderEveryWinSelect = ({ currentFilm }) => {
     return (
       <div>
         {bigOneEveryWinPoints} points per win.
@@ -62,8 +62,8 @@ class BallotBigOneForm extends React.Component {
               <div
                 key={idx}
                 onClick={() => { this.handleFilmChange(film) }}
+                className={film === currentFilm ? 'active' : ''}
               >
-                {/* className={film === currentFilm ? 'active' : ''} */}
                 <br/>
                 {capsToDisplay(film)} ({nominations.length} nominations)
                 <br/>
@@ -109,7 +109,9 @@ class BallotBigOneForm extends React.Component {
             this.renderPictureSelect({
               currentFilm: bigOne.film
             }) :
-            this.renderEveryWinSelect()
+            this.renderEveryWinSelect({
+              currentFilm: bigOne.film
+            })
           }
         </div>
 

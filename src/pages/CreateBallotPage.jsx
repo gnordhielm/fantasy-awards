@@ -20,10 +20,11 @@ class CreateBallotPage extends React.Component {
 
     // activeForm: 'EXTRAS',
     activeForm: 'BIG_ONE',
-    // activeForm: 'BASICS',
+    activeForm: 'BASICS',
 
     ballot: new BallotModel()
   }
+
 
   handleDiscard = () => {
     this.props.history.push('/')

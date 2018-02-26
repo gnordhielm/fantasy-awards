@@ -8,8 +8,6 @@ export const mostNominationsMin = 5
 export const mostNominations = nominationsByFilm(nominees)
   .filter(({ nominations }) => nominations.length >= mostNominationsMin)
 
-console.log(mostNominations);
-
 export const basicCategories = [
   "DIRECTING",
   "ACTOR",
