@@ -38,17 +38,47 @@ class Ballot {
     {
       if (key === 'basics')
       {
+
         for (let basicKey in changes.basics)
         {
-          // make room for the change
-          // if the change fits, just put it in
-          // otherwise, subtract what you can from the last non-change
-          // field
-          this.basics[basicKey] = {
-            ...this.basics[basicKey],
-            ...changes.basics[basicKey],
+          const categoryFields = this.basics[basicKey]
+          const categoryFieldChanges = changes.basics[basicKey]
+
+          const categoryFieldsResult = {
+            ...categoryFields,
+            ...categoryFieldChanges,
           }
+
+          let totalAfterChange = 0
+          for (let i in categoryFieldsResult)
+            totalAfterChange += categoryFieldsResult[i]
+
+          if (totalAfterChange > 1)
+          {
+            // const fieldLength = Object.keys(this.basics[basicKey]).length
+            // const step = 1/fieldLength
+            // const changeIndices = Object.keys(categoryFieldChanges).sort()
+            //
+            // for (let i = 0; i < (fieldLength - 1); i++)
+            // {
+            //   if (changeIndices.includes(i)) continue
+            //   while (totalAfterChange > 1)
+            //   {
+            //     if (!categoryFieldsResult[i]) break
+            //     totalAfterChange -= step
+            //     categoryFieldsResult[i] -= step
+            //   }
+            // }
+            //
+            // if (totalAfterChange <= 1)
+            //   this.basics[basicKey] = categoryFieldsResult
+
+          }
+          else
+            this.basics[basicKey] = categoryFieldsResult
+
         }
+
       }
       else
       {
