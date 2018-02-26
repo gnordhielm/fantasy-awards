@@ -139,7 +139,8 @@ class Ballot2018 {
     return chosenExtrasCount === minExtras
   }
 
-  valid = () => {
+  isValid = () => {
+    return true
     return this.validBigOne() &&
       this.validBasics() &&
       this.validExtras()
@@ -150,10 +151,12 @@ class Ballot2018 {
   decode = encodedBallot => {
       try
       {
-        return JSON.parse(encodedBallot)
+        const data = JSON.parse(encodedBallot)
+        return this.update(data)
       }
       catch (err)
       {
+        console.error('decode error', err)
         return this
       }
   }

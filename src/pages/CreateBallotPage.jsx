@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { cloneDeep} from 'lodash'
 import BallotModel from 'models/Ballot'
+import { set } from 'actions/ballot'
 
 import BallotBasicsForm from 'components/BallotBasicsForm'
 import BallotBigOneForm from 'components/BallotBigOneForm'
@@ -18,7 +20,7 @@ class CreateBallotPage extends React.Component {
   state = {
     activeForm: null,
 
-    activeForm: 'EXTRAS',
+    // activeForm: 'EXTRAS',
     // activeForm: 'BIG_ONE',
     // activeForm: 'BASICS',
 
@@ -40,9 +42,11 @@ class CreateBallotPage extends React.Component {
 
   handleCreate = () => {
     console.log('create', this.state.ballot)
-    // validate ballot
-    // save
-    // redirect
+    if (this.state.ballot.isValid())
+    {
+      this.props.dispatch(set(this.state.ballot))
+      this.props.history.push('/')
+    }
   }
 
   render() {
@@ -75,7 +79,7 @@ class CreateBallotPage extends React.Component {
           <div>
             <button onClick={this.handleDiscard}>Discard</button>
             <button
-              disabled={!this.state.ballot.valid()}
+              disabled={!this.state.ballot.isValid()}
               onClick={this.handleCreate}
             >Create</button>
           </div>
@@ -121,4 +125,4 @@ class CreateBallotPage extends React.Component {
 
 }
 
-export default CreateBallotPage
+export default connect()(CreateBallotPage)

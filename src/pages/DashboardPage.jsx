@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import extras from 'config/extras'
 
-const DashboardPage = props => {
-
-  const hasBallot = false
+const DashboardPage = ({ ballot }) => {
 
   return (
     <div className="page teal-scheme">
@@ -12,8 +11,23 @@ const DashboardPage = props => {
         <h1>
           Dashboard
         </h1>
-        {hasBallot ?
-          <div>Ballot goes here</div> :
+        {!!ballot ?
+          <div>
+            <div>Basics</div>
+            <div>Big One</div>
+            <hr/>
+            <div>Extras</div>
+            {Object.keys(ballot.extras)
+              .filter(key => ballot.extras[key])
+              .map(key => extras[key])
+              .map(({ points, description }, idx) => (
+                <div key={idx}>
+                  <div>{points}</div>
+                  <div>{description}</div>
+                </div>
+              ))}
+
+          </div> :
           <p>
             Please <Link
               className="inline"
@@ -28,7 +42,7 @@ const DashboardPage = props => {
 }
 
 const mapState = state => ({
-
+  ballot: state.ballot[state.auth.uid]
 })
 
 export default connect(mapState)(DashboardPage)

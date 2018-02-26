@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import AppRouter, { history } from 'routers/AppRouter.jsx'
 import configureStore from 'config/configureStore'
+import { read } from 'actions/ballot'
 import { login, logout } from 'actions/auth'
 import LoadingPage from 'pages/LoadingPage.jsx'
 
@@ -36,20 +37,32 @@ ReactDOM.render(
 firebase.auth().onAuthStateChanged(user => {
   if (user)
   {
+    let loginData
+
     db.ref(`users/${user.uid}`)
       .once('value')
       .then(snap => {
-        store.dispatch(login({
+        loginData = {
           uid: user.uid,
           ...snap.val()
+        }
+
+        return db.ref(`ballots/${user.uid}`)
+          .once('value')
+
+      })
+      .then(snap => {
+        const ballot = snap.val()
+
+        store.dispatch(login(loginData))
+        if (ballot) store.dispatch(read({
+          ballot, uid: user.uid
         }))
 
         renderApp()
 
         if (history.location.pathname === '/')
-        {
           history.push('/dashboard')
-        }
       })
   }
   else
