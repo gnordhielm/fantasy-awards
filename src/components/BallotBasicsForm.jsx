@@ -31,6 +31,21 @@ class BallotBasicsForm extends React.Component {
     }))
   }
 
+  handleDistribute = () => {
+    const result = {}
+
+    const { basics } = this.props.ballot
+    const activeCategory = basicCategories[this.state.activeCategoryIdx]
+    const fieldLength = Object.keys(basics[activeCategory]).length
+    const step = 1/fieldLength
+
+    result[activeCategory] = {}
+    for (let key in basics[activeCategory])
+      result[activeCategory][key] = step
+
+    this.props.onChange({ basics: result })
+  }
+
   handleChange = ({ newValue, idx }) => {
     const category = basicCategories[this.state.activeCategoryIdx]
     const changes = {}
@@ -105,6 +120,10 @@ class BallotBasicsForm extends React.Component {
         <div>
           Best {capsToDisplay(activeCategory)}
         </div>
+
+        <button
+          onClick={this.handleDistribute}
+        >Distribute Evenly</button>
 
         {!!remainingPortion ?
           <div>

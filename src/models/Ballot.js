@@ -1,6 +1,10 @@
 import { cloneDeep, every } from 'lodash'
-import { basicCategories } from 'config/settings'
+import {
+  basicCategories,
+  minExtras
+} from 'config/settings'
 import nominees from 'config/nominees'
+import extras from 'config/extras'
 
 const basicsSchema = {}
 basicCategories.forEach(category => {
@@ -9,16 +13,23 @@ basicCategories.forEach(category => {
     basicsSchema[category][i] = 0
 })
 
+const extrasSchema = {}
+Object.keys(extras).forEach(key => {
+  extrasSchema[key] = false
+})
+
 const bigOneCheckers = {
-  PICTURE: _ => _,
-  EVERY_WIN: _ => _
+  PICTURE: results => 0,
+  EVERY_WIN: results => 0
 }
 
-class Ballot {
+const extrasCheckers = {
 
-  basics = {
-    ...basicsSchema
-  }
+}
+
+class Ballot2018 {
+
+  basics = cloneDeep(basicsSchema)
 
   bigOne = {
     film: null,
@@ -27,16 +38,29 @@ class Ballot {
 
   }
 
-  extras = {
-
-  }
-
+  extras = cloneDeep(extrasSchema)
 
   update = (changes={}) => {
 
     for (let key in changes)
     {
-      if (key === 'basics')
+      if (key === 'extras')
+      {
+
+        const extrasResult = {
+          ...this.extras,
+          ...changes.extras
+        }
+
+        let selectedExtrasCount = 0
+        for (let extraKey in extrasResult)
+          if (extrasResult[extraKey]) selectedExtrasCount ++
+
+        if (selectedExtrasCount <= minExtras)
+          this.extras = extrasResult
+
+      }
+      else if (key === 'basics')
       {
 
         for (let basicKey in changes.basics)
@@ -55,6 +79,9 @@ class Ballot {
 
           if (totalAfterChange > 1)
           {
+            // TO DO - subtract from other fields when possible
+            // to make everything fit
+
             // const fieldLength = Object.keys(this.basics[basicKey]).length
             // const step = 1/fieldLength
             // const changeIndices = Object.keys(categoryFieldChanges).sort()
@@ -89,8 +116,7 @@ class Ballot {
     return cloneDeep(this)
   }
 
-  validBasics = () => {
-    every(basicCategories, category => {
+  validBasics = () => every(basicCategories, category => {
       const field = this.basics[category]
       let total = 0
 
@@ -100,16 +126,24 @@ class Ballot {
           total += field[key]
       }
 
-      return total === 1
-
+      return Math.round(total) === 1
     })
+
+  validBigOne = () => !!this.bigOne.film
+
+  validExtras = () => {
+    let chosenExtrasCount = 0
+    for (let key in this.extras)
+      if (this.extras[key]) chosenExtrasCount ++
+
+    return chosenExtrasCount === minExtras
   }
 
-
-  validBigOne = () => true
-  validExtras = () => false
-
-  valid = () => false
+  valid = () => {
+    return this.validBigOne() &&
+      this.validBasics() &&
+      this.validExtras()
+  }
 
   encode = () => JSON.stringify(this)
 
@@ -125,5 +159,5 @@ class Ballot {
   }
 
 }
-window.Ballot = Ballot
-export default Ballot
+
+export default Ballot2018

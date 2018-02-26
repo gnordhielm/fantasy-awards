@@ -8,6 +8,10 @@ export const mostNominationsMin = 5
 export const mostNominations = nominationsByFilm(nominees)
   .filter(({ nominations }) => nominations.length >= mostNominationsMin)
 
+export const bigOneEveryWinPoints = 100
+export const bigOnePicturePoints = 700
+
+export const basicCategoryPoints = 100
 export const basicCategories = [
   "DIRECTING",
   "ACTOR",
@@ -21,8 +25,4 @@ export const basicCategories = [
   "SCORE"
 ]
 
-// Points
-
-export const basicCategoryPoints = 100
-export const bigOneEveryWinPoints = 100
-export const bigOnePicturePoints = 700
+export const minExtras = 3
