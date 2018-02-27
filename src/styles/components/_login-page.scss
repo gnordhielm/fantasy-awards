@@ -1,0 +1,14 @@
+.login-page {
+  background-color: $orange;
+  background-image: url('/assets/logo_full.svg');
+  background-position: center -100px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 70rem auto;
+  color: $orange-light;
+  color: $lightest;
+
+  img {
+    max-width: 100%;
+  }
+}

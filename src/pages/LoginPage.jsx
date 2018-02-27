@@ -4,27 +4,28 @@ import { startFacebookLogin } from '../actions/auth'
 import { Link } from 'react-router-dom'
 
 export const LoginPage = ({ login }) => (
-  <div className="orange-scheme page">
-    <header className="header">
-      <h1 className="header__title">
-        Fantasy Film Awards
-      </h1>
-    </header>
+  <div className="login-page page">
     <div className="page__content">
+      {/* <h1 className="header__title">
+        Fantasy Film Awards
+      </h1> */}
+      <div className="l-spacer"></div>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam est harum quo alias voluptatibus! Placeat blanditiis sed modi quos atque!</p>
-      <button
-        className="button button--block teal"
-        onClick={login}
-      >
-        Log in with Facebook
-      </button>
 
-      <p>
-        Or with your <Link
-          className="inline"
-          to="/phone-auth"
-        >phone number</Link>
-      </p>
+      <div className="page__padded-container">
+        <button
+          className="button button--block purple"
+          onClick={login}
+          >
+            Log in with Facebook
+          </button>
+          <p>
+            Or with your <Link
+              className="underline"
+              to="/phone-auth"
+              >phone number</Link>.
+            </p>
+      </div>
 
     </div>
 

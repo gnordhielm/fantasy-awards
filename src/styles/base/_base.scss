@@ -83,6 +83,19 @@ h2 {
     }
   }
 
+  &.orange {
+    &:hover {
+      color: $orange-dark;
+    }
+    &::after {
+      background: $orange-dark;
+    }
+  }
+
+}
+
+.l-spacer {
+  height: 25rem;
 }
 
 // p,form,input {

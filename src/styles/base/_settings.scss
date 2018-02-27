@@ -20,8 +20,9 @@ $purple-dark-1: darken(desaturate($purple-base, 0.21), 2.94);
 $purple-light-1: lighten(saturate(adjust-hue($purple-base, 2), 2), 12.75);
 $purple-light-2: lighten(saturate(adjust-hue($purple-base, 3), 5), 37.06);
 
-$orange-base: #d75d27;
-$orange: $orange-base;
+$orange-dark: #9f3e1a;
+$orange-base: #d75d27;$orange: $orange-base;
+$orange-light: #fed4bd;
 
 $orange-dark-4: darken(saturate($orange-base, 2.87), 27);
 $orange-dark-3: darken(saturate(adjust-hue($orange-base, -2), 2.87), 13.53);

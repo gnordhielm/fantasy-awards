@@ -67,6 +67,7 @@ module.exports = env => {
         selectors: path.resolve(__dirname, 'src/selectors'),
         config: path.resolve(__dirname, 'src/config'),
         styles: path.resolve(__dirname, 'src/styles'),
+        assets: path.resolve(__dirname, 'public/assets'),
         models: path.resolve(__dirname, 'src/models'),
         test: path.resolve(__dirname, 'src/test')
       },
