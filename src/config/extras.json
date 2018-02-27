@@ -2,7 +2,7 @@
 {
   "WW_II": {
     "points": 200,
-    "description": "A World War II film wins best picture (Darkest Hour or Dunkirk)."
+    "description": "A World War II film wins best picture (\"Darkest Hour\" or \"Dunkirk\")."
   },
   "WRONG_WINNER": {
     "points": 700,
@@ -10,7 +10,7 @@
   },
   "VARDA": {
     "points": 100,
-    "description": "Agnes Varda wins her first Oscar for Faces Places (at the ripe age of 89)."
+    "description": "Agnes Varda wins her first Oscar for \"Faces Places\" (at the ripe old age of 89)."
   },
   "SAME_SOUND": {
     "points": 100,
@@ -18,7 +18,7 @@
   },
   "MONKEY": {
     "points": 200,
-    "description": "A monkey movie wins best visual effects (Planet of the Apes or Kong)."
+    "description": "A monkey movie wins best visual effects (\"Planet of the Apes\" or \"Kong\")."
   },
   "538": {
     "points": 300,
@@ -26,18 +26,18 @@
   },
   "BOSS_BABY": {
     "points": 200,
-    "description": "The Boss Baby wins a fucking Oscar."
+    "description": "\"The Boss Baby\" wins a fucking Oscar."
   },
   "PEELE": {
     "points": 100,
     "description": "Jordan Peele wins for his directorial debut (screenplay, directing, or picture)."
   },
-  "Gerwig": {
+  "GERWIG": {
     "points": 100,
     "description": "Greta Gerwig wins for her directorial debut (directing or picture)."
   },
   "FINAL_CURTAIN": {
     "points": 100,
-    "description": "Daniel Day Lewis wins for his final performance."
+    "description": "Daniel Day-Lewis wins for his final performance."
   }
 }

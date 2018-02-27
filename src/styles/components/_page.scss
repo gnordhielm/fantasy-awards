@@ -1,9 +1,22 @@
 
+.page-and-header-wrapper {
+  height: 100%;
+  display: flex;
+  flex-flow: column-reverse nowrap;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-flow: column nowrap;
+  }
+
+}
+
 .page {
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
   // justify-content: space-between;
+  flex: 1;
+
 }
 
 .page__content {

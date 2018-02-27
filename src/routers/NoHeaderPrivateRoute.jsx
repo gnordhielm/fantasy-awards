@@ -18,12 +18,7 @@ export const PrivateRoute = ({
   else if (!isProfileComplete)
     FinalComponent = props => <CompleteProfilePage {...props} />
   else
-    FinalComponent = props => (
-      <div className="page-and-header-wrapper">
-        <Header {...props} />
-        <Component {...props} />
-      </div>
-    )
+    FinalComponent = props => <Component {...props} />
 
   return <Route {...rest} component={FinalComponent} />
 }

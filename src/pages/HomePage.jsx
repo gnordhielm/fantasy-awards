@@ -6,10 +6,10 @@ import extras from 'config/extras'
 const DashboardPage = ({ ballot }) => {
 
   return (
-    <div className="page teal-scheme">
+    <div className="page purple-scheme">
       <div>
         <h1>
-          Dashboard
+          Home
         </h1>
         {!!ballot ?
           <div>

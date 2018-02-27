@@ -1,9 +1,11 @@
 // Colors
 
 $lightest: #fff;
+$darkest: #222;
 
-$purple-base: #55315c;
-$purple: $purple-base;
+$purple-dark: #200e25;
+$purple-base: #64336d;$purple: $purple-base;
+$purple-light: #baa1bf;
 // $purple-dark-3: #331c3a;
 // $purple-dark-2: #3c2244;
 // $purple-dark-1: #3c2244;
@@ -53,13 +55,15 @@ $blue: #1c88bf;
 $dark-blue: #364051;
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400|Roboto+Condensed:300,400');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400|Roboto+Condensed:300,400|Roboto:300,400');
 
 $header-font: "Roboto Condensed", sans-serif;
-$body-font: "Poppins", sans-serif;
+$body-font: "Roboto", sans-serif;
 
 $xs-font: 1.2rem;
 $s-font: 1.4rem;
+$ms-font: 1.6rem;
+$m-font: 2.2rem;
 $l-font: 6rem;
 $xl-font: 7rem;
 $font-size-small: 1.4rem;
@@ -69,6 +73,7 @@ $font-size-large: 1.75rem;
 
 $xs-size: 0.8rem;
 $s-size: 1.2rem;
+$ms-size: 1.4rem;
 $m-size: 1.6rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
