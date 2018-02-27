@@ -1,0 +1,21 @@
+
+.not-found-page {
+  align-items: center;
+  background: $purple;
+  color: $lightest;
+  display: flex;
+  height: 100vh;
+  flex-flow: column nowrap;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+
+  & > i.icon.exclamation.circle {
+    font-size: $ml-font;
+  }
+
+  & > p {
+    font-size: $m-font;
+  }
+
+}

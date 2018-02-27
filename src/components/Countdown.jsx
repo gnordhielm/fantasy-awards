@@ -36,7 +36,7 @@ class Countdown extends React.Component {
     const { secondsRemaining } = this.state
 
     const hasDays = secondsRemaining >= 86400
-    const hasHours = secondsRemaining >= 360
+    const hasHours = secondsRemaining >= 3600
     const hasMinutes = secondsRemaining >= 60
 
     let time = secondsRemaining
@@ -49,7 +49,7 @@ class Countdown extends React.Component {
     }
     else if (hasHours)
     {
-      time = Math.floor(secondsRemaining/360)
+      time = Math.floor(secondsRemaining/3600)
       unit = time === 1 ? 'Hour' : 'Hours'
     }
     else if (hasMinutes)

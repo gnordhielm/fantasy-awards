@@ -66,6 +66,14 @@ h2 {
   	transform: translateY(14px);
   }
 
+  &:hover {
+    color: $lightest;
+  }
+
+  &::after {
+    background: $lightest;
+  }
+
   &.purple {
     &:hover {
       color: $purple-dark;

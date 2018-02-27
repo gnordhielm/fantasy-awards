@@ -7,9 +7,12 @@ import Countdown from 'components/Countdown'
 
 const ballotReminder = () => (
   <div>
-    <span>Don't forget to </span>
-    <Link to="/new-ballot">fill out a ballot</Link>
-    <span>!</span>
+    <span>Please </span>
+    <Link
+      to="/new-ballot"
+      className="underline"
+    >fill out a ballot</Link>
+    <span>.</span>
   </div>
 )
 
