@@ -94,7 +94,7 @@ class BallotBigOneForm extends React.Component {
     return (
       <div className="ballot-big-one-form">
         {!!bigOne.film ?
-          <p>Done <i className="icon checkmark"></i></p> :
+          <p onClick={this.props.close}>Done <i className="icon checkmark"></i></p> :
           <p>Select film.</p>
         }
 

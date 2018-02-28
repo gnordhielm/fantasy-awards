@@ -18,7 +18,7 @@ const BallotExtrasForm = ({ ballot, onChange }) => {
     <div className="ballot-extras-form">
 
       {!!remaining ?
-        <p>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
+        <p onClick={this.props.close}>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
         <p>Done <i className="icon checkmark"></i></p>
       }
 

@@ -71,6 +71,9 @@ class CreateBallotPage extends React.Component {
             <Form
               ballot={ballot}
               onChange={this.handleBallotChange}
+              close={() => {
+                this.setState(() => ({ activeForm: null }))
+              }}
             />
           </div>
         </div>
