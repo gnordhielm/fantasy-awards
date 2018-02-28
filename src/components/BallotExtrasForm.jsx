@@ -1,7 +1,7 @@
 import React from 'react'
 import extras from 'config/extras'
 
-const BallotExtrasForm = ({ ballot, onChange }) => {
+const BallotExtrasForm = ({ ballot, onChange, close }) => {
 
   const handleChange = key => {
     const result = {}
@@ -18,7 +18,7 @@ const BallotExtrasForm = ({ ballot, onChange }) => {
     <div className="ballot-extras-form">
 
       {!!remaining ?
-        <p onClick={this.props.close}>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
+        <p onClick={close}>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
         <p>Done <i className="icon checkmark"></i></p>
       }
 
