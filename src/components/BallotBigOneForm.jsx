@@ -40,12 +40,14 @@ class BallotBigOneForm extends React.Component {
               <div
                 key={idx}
                 onClick={() => { this.handleFilmChange(film) }}
-                className={film === currentFilm ? 'active' : ''}
+                className={`film ${film === currentFilm ? 'active' : ''}`}
               >
-                <br/>
-                {capsToDisplay(film)}
-                <br/>
-                {recipients.join(', ')}
+                <div className="film-title">
+                  {capsToDisplay(film)}
+                </div>
+                <div className="film-recipients">
+                  {recipients.join(', ')}
+                </div>
               </div>
           ))}
         </div>
@@ -62,18 +64,22 @@ class BallotBigOneForm extends React.Component {
               <div
                 key={idx}
                 onClick={() => { this.handleFilmChange(film) }}
-                className={film === currentFilm ? 'active' : ''}
+                className={`film ${film === currentFilm ? 'active' : ''}`}
               >
-                <br/>
-                {capsToDisplay(film)} ({nominations.length} nominations)
-                <br/>
-                {nominations.reduce((acc, nom) => {
-                  const formattedCategory = capsToDisplay(nom.category)
-                  return acc ?
-                    acc + ', ' + formattedCategory :
-                    formattedCategory
-                }, "")}
+                <div className="film-title">
+                  {capsToDisplay(film)} ({nominations.length} nominations)
+                </div>
+                <div className="film-nominations">
+                  {nominations.reduce((acc, nom) => {
+                    const formattedCategory = capsToDisplay(nom.category)
+                    return acc ?
+                      acc + ', ' + formattedCategory :
+                      formattedCategory
+                  }, "")}
+                </div>
+
               </div>
+
           ))}
         </div>
       </div>
@@ -86,34 +92,47 @@ class BallotBigOneForm extends React.Component {
     const { bigOne } = this.props.ballot
 
     return (
-      <div>
-        <h1>The Big One</h1>
-        <div>Points on:</div>
-        <div>
+      <div className="ballot-big-one-form">
+        {!!bigOne.film ?
+          <p>Done <i className="icon checkmark"></i></p> :
+          <p>Select film.</p>
+        }
+
+        <div className="points-on">
+          <div>Points on:</div>
           <div
-            className={bigOne.pointsOn === 'PICTURE' ? "active" : ''}
+            className={`button ${
+              bigOne.pointsOn === 'PICTURE' ? "active" : ''
+            }`}
             onClick={this.handlePointsOnChange}
           >
             Best Picture
           </div>
           <div
-            className={bigOne.pointsOn === 'EVERY_WIN' ? "active" : ''}
+            className={`button ${
+              bigOne.pointsOn === 'EVERY_WIN' ? "active" : ''
+            }`}
             onClick={this.handlePointsOnChange}
           >
             Every Win
           </div>
+
         </div>
-        <hr/>
+
+
+
         <div>
           {bigOne.pointsOn === 'PICTURE' ?
-            this.renderPictureSelect({
-              currentFilm: bigOne.film
-            }) :
-            this.renderEveryWinSelect({
-              currentFilm: bigOne.film
-            })
-          }
-        </div>
+          this.renderPictureSelect({
+            currentFilm: bigOne.film
+          }) :
+          this.renderEveryWinSelect({
+            currentFilm: bigOne.film
+          })
+        }
+
+      </div>
+
 
       </div>
     )

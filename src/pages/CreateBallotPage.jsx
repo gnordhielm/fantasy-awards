@@ -26,8 +26,7 @@ class CreateBallotPage extends React.Component {
   state = {
     activeForm: null,
 
-    activeForm: 'EXTRAS',
-    // activeForm: 'BIG_ONE',
+    activeForm: 'BIG_ONE',
     // activeForm: 'BASICS',
 
     ballot: new BallotModel()
