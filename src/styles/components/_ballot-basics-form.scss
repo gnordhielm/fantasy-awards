@@ -3,4 +3,69 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .report {
+    display: flex;
+    justify-content: space-between;
+
+    margin: $xs-size 0;
+    padding: 0 $xs-size;
+    background: $lightest;
+    color: $orange;
+
+  }
+
+  .item {
+    margin-top: $l-size;
+    .info {
+      span {
+        color: $orange-dark;
+      }
+    }
+    .value {
+      display: flex;
+      align-items: center;
+
+      .rangeslider, .rangeslider-horizontal {
+        flex: 1;
+        height: 12px;
+        border-radius: 0;
+        box-shadow:none;
+
+        .rangeslider__handle {
+            width: 10px;
+            height: 30px;
+            border-radius: 0;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background: $lightest;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            box-shadow: none;
+
+            &::after {
+              content: none;
+            }
+        }
+
+        .rangeslider__fill {
+            height: 100%;
+            background-color: $orange-dark;
+            border-radius: 0;
+            top: 0;
+            display: block;
+            box-shadow: none;
+        }
+
+
+      }
+      .points {
+        flex: 0 0 3rem;
+        margin-left: $s-size;
+      }
+
+    }
+  }
 }

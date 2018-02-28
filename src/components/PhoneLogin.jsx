@@ -20,7 +20,7 @@ const ConfirmationInput = ({ code, onChange, onSubmit }) => (
     </div>
 
     <button
-      disabled={!code}
+      disabled={!code || code.length < 6}
       className="button button--block purple"
       onClick={onSubmit}
     >Submit</button>

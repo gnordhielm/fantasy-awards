@@ -57,28 +57,25 @@ class BallotBasicsForm extends React.Component {
   }
 
   renderNominee = ({ idx, nominee, value, onChange }) => (
-    <div>
-        <div>
+    <div className="item">
+        <div className="info">
           {nominee.recipients.reduce((acc, name, idx) =>
             acc ? `${acc}, ${name}` : '')}
+            <span> for {capsToDisplay(nominee.film)}</span>
         </div>
-        <div>for</div>
-        <div>
-          {capsToDisplay(nominee.film)}
+        <div className="value">
+          <Slider
+            value={value}
+            onChange={onChange}
+            tooltip={false}
+            min={0}
+            max={1}
+            step={nomineeStep}
+          />
+          <div className="points">
+            {Math.round(value * basicCategoryPoints)}
+          </div>
         </div>
-        <Slider
-          value={value}
-          onChange={onChange}
-          tooltip={false}
-          min={0}
-          max={1}
-          step={nomineeStep}
-        />
-        {/* <Slider
-          value={50}
-          onChange={onChange}
-        >
-        </Slider> */}
 
     </div>
   )
@@ -120,24 +117,24 @@ class BallotBasicsForm extends React.Component {
             /> : <i className="icon" />}
         </div>
 
-
-        <button
-          onClick={this.handleDistribute}
-        >Distribute Evenly</button>
-
-        {!!remainingPortion ?
-          <div>
-            {remainingPortion * basicCategoryPoints} points left to assign.
-          </div>
-          :
-          <div>
-            Done!
-          </div>
-        }
+        <div className="report">
+          {!!remainingPortion ?
+            <p>
+              {remainingPortion * basicCategoryPoints} points left to assign.
+            </p>
+            :
+            <p>
+              Done <i className="icon checkmark" />
+            </p>
+          }
+          <p
+            className="active"
+            onClick={this.handleDistribute}
+          >Distribute</p>
+        </div>
 
         {nominees.map((nominee, idx) => (
           <div key={idx}>
-            <hr/>
             {this.renderNominee({
               nominee,
               idx,
