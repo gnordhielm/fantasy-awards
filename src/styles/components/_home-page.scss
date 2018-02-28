@@ -1,5 +1,6 @@
 .home-page {
   background: $purple;
+  color: $lightest;
 
   h1 {
     flex: 1;
@@ -8,5 +9,19 @@
   a.button {
     color: $lightest;
     margin: 0;
+  }
+
+  .extra, .basic {
+    margin-bottom: $m-size;
+  }
+
+  .basic-title {
+    margin-bottom: $s-size;
+    color: $purple-dark;
+    font-weight: 700;
+  }
+
+  .basic .choice {
+    margin-bottom: $xs-size;
   }
 }

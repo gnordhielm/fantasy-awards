@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { basicCategoryPoints } from 'config/settings'
+import { capsToDisplay } from 'config/util'
 import extras from 'config/extras'
+import nominees from 'config/nominees'
 
 const HomePage = ({ ballot, handle }) => {
 
@@ -13,19 +16,49 @@ const HomePage = ({ ballot, handle }) => {
       <div className="page__content">
         {!!ballot ?
           <div>
-            <div>Basics</div>
-            <div>Big One</div>
-            <hr/>
-            <div>Extras</div>
+            <h2>The Big One</h2>
+            <p>
+              {capsToDisplay(ballot.bigOne.film)} on {
+                ballot.bigOne.pointsOn === "EVERY_WIN" ?
+                "every win" : "best picture win"
+              }.
+            </p>
+            <h2>Extras</h2>
             {Object.keys(ballot.extras)
               .filter(key => ballot.extras[key])
               .map(key => extras[key])
               .map(({ points, description }, idx) => (
-                <div key={idx}>
-                  <div>{points}</div>
-                  <div>{description}</div>
-                </div>
+                <p key={idx} className="extra">
+                  {points} points: {description}
+                </p>
               ))}
+
+              <h2>Basic Categories</h2>
+              {Object.keys(ballot.basics)
+                .map(key => (
+                  <div key={key} className="basic">
+                    <p className="basic-title">Best {capsToDisplay(key)}</p>
+                    {Object.keys(ballot.basics[key])
+                      .filter(idx => ballot.basics[key][idx])
+                      .map(idx => (
+                        <div key={idx} className="choice">
+                          <span>{
+                            nominees[key][idx].recipients.join(', ')
+                          } for {
+                            capsToDisplay(nominees[key][idx].film)
+                          }</span>
+
+                          <p>
+                            {Math.round(
+                              ballot.basics[key][idx] * basicCategoryPoints
+                            )} points.
+                          </p>
+                        </div>
+                      ))
+                    }
+
+                  </div>
+                ))}
 
             </div> :
             <Link

@@ -41,9 +41,15 @@ h1 {
 h2 {
 	color: $lightest;
 	font-family: $header-font;
-	font-size:30px;
+	font-size:$m-font;
 	display: inline-block;
 	margin: 10px 0 0;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: $lightest;
 }
 
 .underline {
