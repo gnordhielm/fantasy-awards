@@ -23,6 +23,7 @@
 .page__content {
   padding: $s-size $m-size;
   flex: 1;
+  min-width: 30rem;
   max-width: 50rem;
   margin: 0 auto;
 }
