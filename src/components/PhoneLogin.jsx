@@ -49,7 +49,7 @@ const PhoneNumberInput = ({ number, onChange, onSubmit }) => (
       className="button button--block purple"
       id={recaptchaTargetId}
       onClick={onSubmit}
-    >Send Code</button>
+    >Send Login Code</button>
 
     <div className="notes">
       <p>Only US numbers can be used for login.</p>

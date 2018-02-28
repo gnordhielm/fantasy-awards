@@ -9,17 +9,31 @@ const BallotExtrasForm = ({ ballot, onChange }) => {
     onChange({ extras: result })
   }
 
+  let remaining = 3
+  Object.keys(extras).forEach(key => {
+    if (ballot.extras[key]) remaining --
+  })
+
   return (
-    <div>
+    <div className="ballot-extras-form">
+
+      {!!remaining ?
+        <p>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
+        <p>Done <i className="icon checkmark"></i></p>
+      }
+
       {Object.keys(extras).map(key => (
         <div
           key={key}
           onClick={() => { handleChange(key) }}
-          className={ballot.extras[key] ? 'active' : ''}
+          className={`item ${ballot.extras[key] ? 'active' : ''}`}
         >
-          {extras[key].points}
-          -
-          {extras[key].description}
+          <div className="points">
+            {extras[key].points}
+          </div>
+          <div className="description">
+            {extras[key].description}
+          </div>
         </div>
       ))}
     </div>
