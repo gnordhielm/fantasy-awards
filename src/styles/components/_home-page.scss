@@ -1,0 +1,12 @@
+.home-page {
+  background: $purple;
+
+  h1 {
+    flex: 1;
+  }
+
+  a.button {
+    color: $lightest;
+    margin: 0;
+  }
+}

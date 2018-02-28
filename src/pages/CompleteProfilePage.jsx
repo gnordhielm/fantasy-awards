@@ -97,7 +97,7 @@ class CompleteProfilePage extends React.Component {
     return (
       <div className="complete-profile-page page">
         <div className="title">
-          <h1>Complete your profile</h1>
+          <h1>Complete your Profile</h1>
         </div>
         <form
           className="page__content"

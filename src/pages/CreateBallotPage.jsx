@@ -15,21 +15,22 @@ const formComponentLookup = {
   EXTRAS: BallotExtrasForm
 }
 
+const titleLookup = {
+  BASICS: 'Basics',
+  BIG_ONE: 'The Big One',
+  EXTRAS: 'Extras'
+}
+
 class CreateBallotPage extends React.Component {
 
   state = {
     activeForm: null,
 
-    // activeForm: 'EXTRAS',
+    activeForm: 'EXTRAS',
     // activeForm: 'BIG_ONE',
     // activeForm: 'BASICS',
 
     ballot: new BallotModel()
-  }
-
-
-  handleDiscard = () => {
-    this.props.history.push('/')
   }
 
   handleBallotChange = changes => {
@@ -51,72 +52,89 @@ class CreateBallotPage extends React.Component {
 
   render() {
 
+    const { ballot } = this.state
+
     const Form = formComponentLookup[this.state.activeForm]
 
     if (Form)
     {
       return (
-        <div className="page orange-scheme">
-          <i
-            className="icon chevron left"
-            onClick={() => {
-              this.setState(() => ({ activeForm: null }))
-            }}
-          />
-          <Form
-            ballot={this.state.ballot}
-            onChange={this.handleBallotChange}
-          />
+        <div className="page create-ballot-page-form">
+          <div className="title">
+            <span
+              onClick={() => {
+                this.setState(() => ({ activeForm: null }))
+              }}
+            >
+              <i className="icon chevron left"/>
+              &nbsp;Back
+            </span>
+            <h1>{titleLookup[this.state.activeForm]}</h1>
+
+          </div>
+          <div className="page__content">
+            <Form
+              ballot={ballot}
+              onChange={this.handleBallotChange}
+            />
+          </div>
         </div>
       )
     }
 
     return (
-      <div className="page purple-scheme">
+      <div className="page create-ballot-page">
+        <div className="title">
+          <Link to="/" className="dark">
+            <i className="icon remove"></i>
+            &nbsp;Discard
+          </Link>
+          <h1>New Ballot</h1>
+        </div>
 
-        <div>
+        <div className="page__content">
 
-          <div>
-            <button onClick={this.handleDiscard}>Discard</button>
-            <button
-              disabled={!this.state.ballot.isValid()}
-              onClick={this.handleCreate}
-            >Create</button>
+          <div className="categories">
+            <div
+              className={`card ${ballot.validBasics() ? 'complete' : ''}`}
+              onClick={() => {
+                this.setState(() => ({ activeForm: 'BASICS' }))
+              }}
+            >
+              Basic Categories
+              {ballot.validBasics() &&
+                <i className="icon checkmark" />}
+            </div>
+
+            <div
+              className={`card ${ballot.validBigOne() ? 'complete' : ''}`}
+              onClick={() => {
+                this.setState(() => ({ activeForm: 'BIG_ONE' }))
+              }}
+            >
+              The Big One
+              {ballot.validBigOne() &&
+                <i className="icon checkmark" />}
+            </div>
+
+            <div
+              className={`card ${ballot.validExtras() ? 'complete' : ''}`}
+              onClick={() => {
+                this.setState(() => ({ activeForm: 'EXTRAS' }))
+              }}
+            >
+              Extras
+              {ballot.validExtras() &&
+                <i className="icon checkmark" />}
+            </div>
+
           </div>
 
-          <h1>
-            New Ballot
-          </h1>
-
-          <div
-            onClick={() => {
-              this.setState(() => ({ activeForm: 'BASICS' }))
-            }}
-          >
-            Basic Categories
-            {this.state.ballot.validBasics() &&
-              <i className="icon checkmark" />}
-          </div>
-
-          <div
-            onClick={() => {
-              this.setState(() => ({ activeForm: 'BIG_ONE' }))
-            }}
-          >
-            The Big One
-            {this.state.ballot.validBigOne() &&
-              <i className="icon checkmark" />}
-          </div>
-
-          <div
-            onClick={() => {
-              this.setState(() => ({ activeForm: 'EXTRAS' }))
-            }}
-          >
-            Extras
-            {this.state.ballot.validExtras() &&
-              <i className="icon checkmark" />}
-          </div>
+          <button
+            className="button button--block orange"
+            disabled={!ballot.isValid()}
+            onClick={this.handleCreate}
+          >Create</button>
         </div>
 
       </div>

@@ -140,7 +140,6 @@ class Ballot2018 {
   }
 
   isValid = () => {
-    return true
     return this.validBigOne() &&
       this.validBasics() &&
       this.validExtras()

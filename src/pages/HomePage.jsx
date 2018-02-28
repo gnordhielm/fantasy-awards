@@ -6,11 +6,11 @@ import extras from 'config/extras'
 const HomePage = ({ ballot, handle }) => {
 
   return (
-    <div className="page purple-scheme">
-      <div>
-        <h1>
-          {handle}
-        </h1>
+    <div className="page home-page">
+      <div className="title">
+        <h1>{handle}</h1>
+      </div>
+      <div className="page__content">
         {!!ballot ?
           <div>
             <div>Basics</div>
@@ -27,15 +27,15 @@ const HomePage = ({ ballot, handle }) => {
                 </div>
               ))}
 
-          </div> :
-          <p>
-            Please <Link
-              className="inline"
+            </div> :
+            <Link
+              className="button"
               to="/new-ballot"
-            >fill out a ballot</Link>.
-          </p>
-        }
-
+            >
+              <i className="icon plus"></i>&ensp;
+              Create Ballot
+            </Link>
+            }
       </div>
     </div>
   )

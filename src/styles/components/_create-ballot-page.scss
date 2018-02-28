@@ -1,0 +1,54 @@
+.create-ballot-page {
+  background: $purple;
+
+  .page__content {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    .categories {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      // justify-content: center;
+      flex-flow: column;
+    }
+  }
+
+  .title {
+    a.dark {
+      color: $lightest;
+      // color: $purple-dark;
+    }
+  }
+
+  .card {
+    cursor: pointer;
+    color: $lightest;
+    margin: $m-size 0;
+    padding: $s-size;
+    text-align: center;
+    border: 2px solid $lightest;
+
+    &.complete {
+      background: $lightest;
+      color: $purple;
+    }
+
+    i.icon {
+      margin-left: $xs-size;
+    }
+  }
+
+  .button {
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+}
+
+.create-ballot-page-form {
+  background: $orange;
+  color: $lightest;
+}
