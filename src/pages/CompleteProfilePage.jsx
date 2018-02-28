@@ -47,7 +47,8 @@ class CompleteProfilePage extends React.Component {
     this.setState(() => ({ color }))
   }
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault()
 
     this.setState(() => ({ error: '' }))
 
@@ -94,33 +95,47 @@ class CompleteProfilePage extends React.Component {
   render() {
 
     return (
-      <div className="page purple-scheme">
-        <div className="user-form">
+      <div className="complete-profile-page page">
+        <div className="title">
           <h1>Complete your profile</h1>
-          {!!this.state.error && <p>{this.state.error}</p>}
-          <div>
-            <p>Full Name</p>
-            <input
-              spellCheck={false}
-              type="text"
-              value={this.state.fullName}
-              onChange={this.handleNameChange}
-            />
-          </div>
-          <div>
-            <p>Handle</p>
-            <input
-              spellCheck={false}
-              type="text"
-              value={this.state.handle}
-              onChange={this.handleHandleChange}
-            />
-            <small>Max {maxHandleLength} characters, no whitespace.</small>
-          </div>
-          <button onClick={this.handleSubmit}>
-            Submit
-          </button>
         </div>
+        <form
+          className="page__content"
+          onSubmit={this.handleSubmit}
+        >
+          <div className="user-form">
+            <div className="field">
+              <p className="label">Full Name</p>
+              <input
+                spellCheck={false}
+                type="text"
+                value={this.state.fullName}
+                onChange={this.handleNameChange}
+              />
+              <p className="label">Handle</p>
+              <input
+                spellCheck={false}
+                type="text"
+                value={this.state.handle}
+                onChange={this.handleHandleChange}
+              />
+              <p className="note">Max {maxHandleLength} characters, no whitespace.</p>
+            </div>
+            <div>
+              {!!this.state.error &&
+                <div className="error">
+                  <i className="icon exclamation circle"></i>
+                  <p>{this.state.error}</p>
+                </div>
+              }
+
+              <button
+                className="button button--block purple"
+                onClick={this.handleSubmit}
+              >Submit</button>
+            </div>
+            </div>
+        </form>
       </div>
     )
   }

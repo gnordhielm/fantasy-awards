@@ -37,11 +37,12 @@
     }
 
     input {
-      // padding: $xs-size;
-      background: none;
+      padding: $xs-size;
+      background: $lightest;
+      // background: $orange-light;
       border:none;
-      border-bottom: 2px solid $lightest;
-      color: $lightest;
+      // border-bottom: 2px solid $lightest;
+      color: $orange-dark;
       width: 11rem;
       outline: none;
       text-align: center;
@@ -51,7 +52,7 @@
   .centered-input {
     justify-content: center;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     text-align: center;
     margin: $l-size 0 $xl-size;
   }

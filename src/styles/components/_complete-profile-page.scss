@@ -1,0 +1,44 @@
+.complete-profile-page {
+  background: $purple;
+  text-align: center;
+
+  .field {
+    margin: $l-size 0;
+  }
+
+  .user-form {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .error {
+    color: white;
+  }
+
+  button {
+    margin-top: 6rem;
+  }
+
+  .label {
+    color: $purple-light;
+    margin: $l-size 0 $s-size;
+  }
+
+  input {
+    background: $purple-light;
+    color: $purple;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: $xs-size;
+  }
+
+  .note {
+    color: $purple-dark;
+    font-size: $s-font;
+    margin: $xs-size 0;
+  }
+
+}
