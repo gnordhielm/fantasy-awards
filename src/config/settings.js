@@ -4,7 +4,7 @@ import nominees from 'config/nominees'
 export const personalLink = 'http://www.gusnordhielm.com/'
 export const oscars2018Time = "2018/03/04 17:30:00 UTC"
 
-export const maxHandleLength = 12
+export const maxHandleLength = 30
 
 export const mostNominationsMin = 5
 export const mostNominations = nominationsByFilm(nominees)
