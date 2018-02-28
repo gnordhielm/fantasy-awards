@@ -7,12 +7,11 @@ import { startFacebookLogin } from '../actions/auth'
 export const LoginPage = ({ login }) => (
   <div className="login-page page">
     <div className="page__content">
-      {/* <h1 className="header__title">
-        Fantasy Film Awards
-      </h1> */}
+
       <div className="l-spacer"></div>
       <div className="page__padded-container">
-        <p></p>
+
+        <p>Movie fans' answer to fantasy sports. Sign in with one click, fill out a ballot, then follow along while the Oscars are live!</p>
 
         <br/>
 
