@@ -103,23 +103,23 @@ class BallotBasicsForm extends React.Component {
     }
 
     return (
-      <div>
-        <div>
-          {canPageBack &&
+      <div className="ballot-basics-form">
+        <div className="paginator">
+          {canPageBack ?
             <i
               className="icon arrow left"
               onClick={this.handlePageBack}
-            />}
-          {canPageForward &&
+            /> : <i className="icon" />}
+          <div>
+            Best {capsToDisplay(activeCategory)}
+          </div>
+          {canPageForward ?
             <i
               className="icon arrow right"
               onClick={this.handlePageForward}
-            />}
+            /> : <i className="icon" />}
         </div>
 
-        <div>
-          Best {capsToDisplay(activeCategory)}
-        </div>
 
         <button
           onClick={this.handleDistribute}
