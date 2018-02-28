@@ -1,7 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { startFacebookLogin } from '../actions/auth'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Footer from 'components/Footer'
+import { startFacebookLogin } from '../actions/auth'
 
 export const LoginPage = ({ login }) => (
   <div className="login-page page">
@@ -10,9 +11,11 @@ export const LoginPage = ({ login }) => (
         Fantasy Film Awards
       </h1> */}
       <div className="l-spacer"></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam est harum quo alias voluptatibus! Placeat blanditiis sed modi quos atque!</p>
-
       <div className="page__padded-container">
+        <p></p>
+
+        <br/>
+
         <button
           className="button button--block purple"
           onClick={login}
@@ -23,11 +26,12 @@ export const LoginPage = ({ login }) => (
             Or with your <Link
               className="underline"
               to="/phone-auth"
-              >phone number</Link>.
+            >phone number</Link>.
             </p>
       </div>
 
     </div>
+    <Footer className="orange" />
 
   </div>
 )

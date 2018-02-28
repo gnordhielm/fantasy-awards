@@ -1,18 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import pkg from '../../package'
 
 export const Footer = ({ logout }) => (
   <footer className="footer dark">
-    <Link to="/">Log In</Link>
-    <Link to="/">About</Link>
     <p>
       Words and code by <a
         href="https://www.gnportfolio.com"
         target="_blank"
-        className="inline"
+        className="underline"
       >Gus</a>.
     </p>
-    {/* <p>&copy; {new Date().getFullYear()}</p> */}
+    <p>v{pkg.version}</p>
   </footer>
 )
 

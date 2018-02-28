@@ -1,18 +1,14 @@
 .footer {
-
-  p, a {
-    font-size: $xs-font;
-  }
+  font-size: $xs-font;
 
   a:after {
     height: 1px;
     transform: translateY(17px);
   }
 
-
   flex: 0 0 auto;
   display: flex;
+  justify-content: space-between;
   padding: $xs-size $s-size;
-
 
 }
