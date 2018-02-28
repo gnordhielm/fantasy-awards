@@ -4,7 +4,6 @@ import nominees from 'config/nominees'
 export const personalLink = 'http://www.gusnordhielm.com/'
 export const oscars2018Time = "2018/03/04 17:30:00 UTC"
 
-export const recaptchaTargetId = 'recaptcha-phone-auth-target'
 export const maxHandleLength = 20
 
 export const mostNominationsMin = 5

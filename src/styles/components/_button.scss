@@ -14,6 +14,7 @@
 	width: 100%;
 	margin: $l-size auto  $l-size;
 
+
   &.purple {
     background: $purple;
 		color: $lightest;
@@ -23,6 +24,11 @@
       color: $purple;
     }
   }
+
+	&:disabled {
+		pointer-events: none;
+		background: none;
+	}
 
   transition:
     background 250ms ease-in-out,

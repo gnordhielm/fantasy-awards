@@ -1,0 +1,13 @@
+.phone-login-page {
+  background: $orange;
+  color: $lightest;
+
+  & > .title > .dark {
+    color: $orange-dark;
+  }
+
+  & > .page__content {
+    padding: $m-size $l-size;
+  }
+
+}

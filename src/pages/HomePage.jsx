@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import extras from 'config/extras'
 
-const DashboardPage = ({ ballot, handle }) => {
+const HomePage = ({ ballot, handle }) => {
 
   return (
     <div className="page purple-scheme">
       <div>
         <h1>
-          {this.props.handle}
+          {handle}
         </h1>
         {!!ballot ?
           <div>
@@ -46,4 +46,4 @@ const mapState = state => ({
   handle: state.auth.handle
 })
 
-export default connect(mapState)(DashboardPage)
+export default connect(mapState)(HomePage)

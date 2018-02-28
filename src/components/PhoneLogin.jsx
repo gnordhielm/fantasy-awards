@@ -1,14 +1,71 @@
 import React from 'react'
 import { firebase } from 'config/firebase'
+import ReactLoading from 'react-loading'
+const recaptchaTargetId = 'recaptcha-phone-auth-target'
+const phoneRegex = /^[0-9]{10}$/
 
-const recaptchaTargetId = 'recaptcha-look-here'
+const ConfirmationInput = ({ code, onChange, onSubmit }) => (
+  <form
+    className="phone-number-input"
+    onSubmit={onSubmit}
+  >
+    <p>Enter your confirmation code.</p>
+
+    <div className="centered-input">
+      <input
+        type="text"
+        value={code}
+        onChange={onChange}
+      />
+    </div>
+
+    <button
+      disabled={!code}
+      className="button button--block purple"
+      onClick={onSubmit}
+    >Submit</button>
+
+  </form>
+)
+
+const PhoneNumberInput = ({ number, onChange, onSubmit }) => (
+  <form
+    className="phone-number-input"
+    onSubmit={onSubmit}
+  >
+    <p>Enter your phone number.</p>
+
+    <div className="centered-input">
+      <div>+1</div>
+      <input
+        type="text"
+        value={number}
+        onChange={onChange}
+      />
+    </div>
+
+    <button
+      disabled={!(phoneRegex.test(number))}
+      className="button button--block purple"
+      id={recaptchaTargetId}
+      onClick={onSubmit}
+    >Send Code</button>
+
+    <div className="notes">
+      <p>Only US numbers can be used for login.</p>
+      <p>On submission, an SMS will be sent. Message and data rates may apply.</p>
+    </div>
+
+  </form>
+)
 
 class PhoneLogin extends React.Component {
 
   state = {
     phoneNumber: '',
-    errors: '',
-    messageSent: false,
+    error: '',
+    loading: '',
+    codeSent: false,
     confirmationCode: ''
   }
 
@@ -32,29 +89,37 @@ class PhoneLogin extends React.Component {
   }
 
   handlePhoneNumberChange = e => {
-    const phoneNumber = e.target.value
+    const phoneNumber = e.target.value.replace(/[\s\-\(\)]/g, '')
     this.setState(() => ({ phoneNumber }))
   }
 
   handleSubmitNumber = e => {
-    this.setState(() => ({ error: null }))
+    e.preventDefault()
 
-    const number = "+1" + this.state.phoneNumber.replace(/[\s\-\(\)]/g, '')
+    if (!phoneRegex.test(this.state.phoneNumber)) return
 
-    const verifier = window.recaptchaVerifier
-    firebase.auth().signInWithPhoneNumber(number, verifier)
+    this.setState(() => ({
+      error: '',
+      loading: 'Sending code...'
+    }))
+
+    const number = "+1" + this.state.phoneNumber
+      .replace(/[\s\-\(\)]/g, '')
+
+    firebase.auth()
+      .signInWithPhoneNumber(number, window.recaptchaVerifier)
       .then(confirmer => {
-
-        // console.log('code sent!')
         this.confirmer = confirmer
         this.setState(() => ({
-          messageSent: true,
+          codeSent: true,
+          loading: ''
         }))
       })
       .catch(err => {
         console.log('phone sign in error', err)
         this.setState(() => ({
-          error: 'Could not send a message to the number provided.'
+          error: 'Error sending code, please check the number you entered and try again.',
+          loading: ''
         }))
       })
   }
@@ -64,9 +129,17 @@ class PhoneLogin extends React.Component {
     this.setState(() => ({ confirmationCode }))
   }
 
-  handleSubmitConfirmation = () => {
-    this.setState(() => ({ error: null }))
+  handleSubmitConfirmation = e => {
+    e.preventDefault()
+
+    this.setState(() => ({
+      error: '',
+      loading: 'Checking code...'
+    }))
+
     const code = this.state.confirmationCode
+    if (!code) return
+
     this.confirmer.confirm(code)
       .then(res => {
         // console.log('confirmation success!', res.user)
@@ -74,7 +147,8 @@ class PhoneLogin extends React.Component {
       .catch(err => {
         console.log('confirmation error', err)
         this.setState(() => ({
-          error: 'Error validating confirmation code.'
+          error: 'Could not validate confirmation code, please try again.',
+          loading: ''
         }))
       })
 
@@ -82,43 +156,37 @@ class PhoneLogin extends React.Component {
 
   render() {
 
-    if (this.state.messageSent)
-      return (
-          <div>
-            {!!this.state.error && <p>{this.state.error}</p>}
-            <label>Confirmation code</label>
-            <div>
-              <input
-                type="text"
-                value={this.state.confirmationCode}
-                onChange={this.handleConfirmationChange}
-              />
-            </div>
-            <button
-              onClick={this.handleSubmitConfirmation}
-            >Submit</button>
-          </div>
-      )
-
     return (
-      <div>
-        {!!this.state.error && <p>{this.state.error}</p>}
-        <label>Phone Number</label>
-        <div>
-          <label>+1</label>
-          <input
-            type="text"
-            value={this.state.phoneNumber}
-            onChange={this.handlePhoneNumberChange}
-          />
-        </div>
-        <button
-          id={recaptchaTargetId}
-          onClick={this.handleSubmitNumber}
-        >Submit</button>
-
-        <small>Only US numbers can be used for authentication.</small>
-        <small>On submission, an SMS may be sent. Message and data rates may apply.</small>
+      <div className="phone-login">
+        {!!this.state.loading &&
+            <div className="loading-overlay">
+              <div>
+                <ReactLoading
+                  type="bubbles"
+                  className="loader"
+                />
+                <p>{this.state.loading}</p>
+              </div>
+          </div>
+        }
+        {!!this.state.error &&
+          <div className="error">
+            <i className="icon exclamation circle"></i>
+            <p>{this.state.error}</p>
+          </div>
+        }
+        {this.state.codeSent ?
+          ConfirmationInput({
+            code: this.state.confirmationCode,
+            onChange: this.handleConfirmationChange,
+            onSubmit: this.handleSubmitConfirmation
+          }) :
+          PhoneNumberInput({
+            number: this.state.phoneNumber,
+            onChange: this.handlePhoneNumberChange,
+            onSubmit: this.handleSubmitNumber
+          })
+        }
       </div>
     )
   }
