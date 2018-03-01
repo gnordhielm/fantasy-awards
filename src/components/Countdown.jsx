@@ -40,22 +40,22 @@ class Countdown extends React.Component {
     const hasMinutes = secondsRemaining >= 60
 
     let time = secondsRemaining
-    let unit = secondsRemaining === 1 ? 'Second' : 'Seconds'
+    let unit = secondsRemaining === 1 ? 'second' : 'seconds'
 
     if (hasDays)
     {
       time = Math.floor(secondsRemaining/86400)
-      unit = time === 1 ? 'Day' : 'Days'
+      unit = time === 1 ? 'day' : 'days'
     }
     else if (hasHours)
     {
       time = Math.floor(secondsRemaining/3600)
-      unit = time === 1 ? 'Hour' : 'Hours'
+      unit = time === 1 ? 'hour' : 'hours'
     }
     else if (hasMinutes)
     {
       time = Math.floor(secondsRemaining/60)
-      unit = time === 1 ? 'Minute' : 'Minutes'
+      unit = time === 1 ? 'minute' : 'minutes'
     }
 
     return (

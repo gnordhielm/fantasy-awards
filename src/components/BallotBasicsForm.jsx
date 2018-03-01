@@ -114,7 +114,12 @@ class BallotBasicsForm extends React.Component {
             <i
               className="icon arrow right"
               onClick={this.handlePageForward}
-            /> : <i className="icon" />}
+            /> :
+            <i
+              className="icon checkmark"
+              onClick={this.props.close}
+            />
+          }
         </div>
 
         <div className="report">
