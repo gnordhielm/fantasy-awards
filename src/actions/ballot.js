@@ -29,6 +29,20 @@ export const set = ballot => (dispatch, getState) => {
 
 }
 
+export const index = ({ ballots }) => {
+  const payload = {}
+
+  Object.keys(ballots).forEach(key => {
+    payload[key] = new BallotModel().decode(ballots[key])
+  })
+
+  return {
+    type: 'INDEX_BALLOTS',
+    payload
+  }
+
+}
+
 export const read = ({ ballot, uid }) => ({
   type: 'READ_BALLOT',
   ballot: new BallotModel().decode(ballot),

@@ -11,6 +11,8 @@ import AppRouter, { history } from 'routers/AppRouter.jsx'
 import configureStore from 'config/configureStore'
 import { read } from 'actions/ballot'
 import { login, logout } from 'actions/auth'
+import * as ballotActions from 'actions/ballot'
+import * as userActions from 'actions/user'
 import LoadingPage from 'pages/LoadingPage.jsx'
 
 const store = configureStore()
@@ -37,32 +39,36 @@ ReactDOM.render(
 firebase.auth().onAuthStateChanged(user => {
   if (user)
   {
-    let loginData
 
-    db.ref(`users/${user.uid}`)
-      .once('value')
+    // get full user info
+    db.ref(`users/${user.uid}`).once('value')
       .then(snap => {
-        loginData = {
+
+        store.dispatch(login({
           uid: user.uid,
           ...snap.val()
-        }
-
-        return db.ref(`ballots/${user.uid}`)
-          .once('value')
-
-      })
-      .then(snap => {
-        const ballot = snap.val()
-
-        store.dispatch(login(loginData))
-        if (ballot) store.dispatch(read({
-          ballot, uid: user.uid
         }))
 
-        renderApp()
+        // get all ballots
+        return db.ref(`ballots`).once('value')
+      })
+      .then(snap => {
+        const ballots = snap.val()
+        store.dispatch(ballotActions.index({ ballots }))
 
+        // get all users
+        return db.ref(`users`).once('value')
+      })
+      .then(snap => {
+        const users = snap.val()
+        store.dispatch(userActions.index({ users }))
+
+        return
+      })
+      .then(() => {
+        renderApp()
         if (history.location.pathname === '/')
-          history.push('/dashboard')
+          history.push('/feed')
       })
   }
   else
@@ -72,3 +78,25 @@ firebase.auth().onAuthStateChanged(user => {
     renderApp()
   }
 })
+
+// objective state subscription
+const handleObjectiveStateChange = snap => {
+  const payload = snap.val()
+  console.log('handleObjectiveStateChange', payload)
+  store.dispatch({
+    type: 'SET_OBJECTIVE_STATE',
+    payload
+  })
+}
+db.ref(`objectiveState`).on('value', handleObjectiveStateChange)
+
+// results subscription
+const handleResultsChange = snap => {
+  const payload = snap.val()
+  console.log('handleResultsChange', payload)
+  store.dispatch({
+    type: 'SET_RESULTS',
+    payload
+  })
+}
+db.ref(`results`).on('value', handleResultsChange)

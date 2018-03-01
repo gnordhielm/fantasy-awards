@@ -1,7 +1,8 @@
 import { nominationsByFilm } from 'config/util'
 import nominees from 'config/nominees'
 
-export const personalLink = 'http://www.gusnordhielm.com/'
+export const personalLink = 'https://github.com/gnordhielm'
+// export const personalLink = 'http://www.gusnordhielm.com/'
 export const oscars2018Time = "2018/03/04 17:30:00 UTC"
 
 export const maxHandleLength = 30
@@ -28,3 +29,16 @@ export const basicCategories = [
 ]
 
 export const minExtras = 3
+
+export const filmIconLookup = {
+  "CALL_ME_BY_YOUR_NAME": "call_me_by.svg",
+  "DARKEST_HOUR": "darkest_hour.svg",
+  "DUNKIRK": "dunkirk.svg",
+  "GET_OUT": "get_out.svg",
+  "LADY_BIRD": "lady_bird.svg",
+  "PHANTOM_THREAD": "phantom_thread.svg",
+  "THREE_BILLBOARDS_OUTSIDE_EBBING,_MISSOURI": "billboards.svg",
+  "THE_SHAPE_OF_WATER": "shape_of_water.svg",
+  "THE_POST": "the_post.svg",
+  "FALLBACK": "fallback.svg",
+}

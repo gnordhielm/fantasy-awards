@@ -1,9 +1,54 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import FeedBallot from 'components/FeedBallot'
 
-const FeedPage = props => (
-  <div className="page purple-scheme">
-    <h3>&emsp;Feed coming soon...</h3>
-  </div>
-)
+class FeedPage extends React.Component {
 
-export default FeedPage
+  state = {
+    focusedBallotId: null
+  }
+
+  handleBallotClick = id => {
+    this.setState(() => ({ focusedBallotId: id }))
+  }
+
+  clearFocusedBallot = () => {
+    this.setState(() => ({ focusedBallotId: null }))
+  }
+
+  render() {
+
+    if (this.state.focusedBallotId)
+      return (
+        <div className="page feed-page">
+          <div onClick={this.clearFocusedBallot}>
+            {this.state.focusedBallotId}
+          </div>
+        </div>
+      )
+
+    return (
+      <div className="feed-page page">
+        <div className="page__content">
+          {Object.keys(this.props.ballots).map((key, idx) => (
+            <FeedBallot
+              align={idx % 2 ? 'RIGHT' : 'LEFT'}
+              onClick={this.handleBallotClick}
+              key={key}
+              id={key}
+              user={this.props.users[key]}
+              ballot={this.props.ballots[key]}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+}
+
+const mapState = state => ({
+  ballots: state.ballot,
+  users: state.user
+})
+
+export default connect(mapState)(FeedPage)

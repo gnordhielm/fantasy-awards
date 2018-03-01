@@ -1,0 +1,28 @@
+.feed-ballot {
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 15rem;
+  width: 15rem;
+
+  margin: 0 auto;
+
+  margin-bottom: -$l-size;
+
+  &.right {
+    margin-right: -$s-size;
+  }
+
+  &.left {
+    margin-left: -$s-size;
+  }
+
+  p {
+    margin-top: $s-size;
+    font-weight: 400;
+    color: $lightest;
+  }
+}
