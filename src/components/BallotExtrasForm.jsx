@@ -18,8 +18,8 @@ const BallotExtrasForm = ({ ballot, onChange, close }) => {
     <div className="ballot-extras-form">
 
       {!!remaining ?
-        <p onClick={close}>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
-        <p>Done <i className="icon checkmark"></i></p>
+        <p>{remaining} {remaining === 1 ? 'pick' : 'picks'} remaining.</p> :
+        <p onClick={close}>Done <i className="icon checkmark"></i></p>
       }
 
       {Object.keys(extras).map(key => (
