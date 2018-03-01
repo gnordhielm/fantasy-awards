@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import FeedBallot from 'components/FeedBallot'
+import BallotDisplay from 'components/BallotDisplay'
 
 class FeedPage extends React.Component {
 
@@ -9,7 +10,11 @@ class FeedPage extends React.Component {
   }
 
   handleBallotClick = id => {
-    this.setState(() => ({ focusedBallotId: id }))
+
+    if (id === this.props.uid)
+      this.props.history.push('/home')
+    else
+      this.setState(() => ({ focusedBallotId: id }))
   }
 
   clearFocusedBallot = () => {
@@ -18,11 +23,23 @@ class FeedPage extends React.Component {
 
   render() {
 
-    if (this.state.focusedBallotId)
+    const { focusedBallotId } = this.state
+
+    if (focusedBallotId)
       return (
-        <div className="page feed-page">
-          <div onClick={this.clearFocusedBallot}>
-            {this.state.focusedBallotId}
+        <div className="page feed-page with-ballot">
+          <div className="title">
+            <h1 onClick={this.clearFocusedBallot}>
+              <i className="icon remove"></i>
+            </h1>
+            <h1>
+              {this.props.users[focusedBallotId].handle}
+            </h1>
+          </div>
+          <div className="page__content">
+            <BallotDisplay
+              ballot={this.props.ballots[focusedBallotId]}
+            />
           </div>
         </div>
       )

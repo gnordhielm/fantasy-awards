@@ -2,4 +2,9 @@
   background: $purple;
   padding: $l-size 0 ($l-size * 2);
 
+  &.with-ballot {
+    background: $orange;
+    padding: $s-size;
+  }
+
 }
