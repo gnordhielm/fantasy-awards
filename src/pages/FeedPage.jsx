@@ -38,6 +38,7 @@ class FeedPage extends React.Component {
               id={key}
               user={this.props.users[key]}
               ballot={this.props.ballots[key]}
+              isCurrentUser={this.props.uid === key}
             />
           ))}
         </div>
@@ -48,7 +49,8 @@ class FeedPage extends React.Component {
 
 const mapState = state => ({
   ballots: state.ballot,
-  users: state.user
+  users: state.user,
+  uid: state.auth.uid
 })
 
 export default connect(mapState)(FeedPage)

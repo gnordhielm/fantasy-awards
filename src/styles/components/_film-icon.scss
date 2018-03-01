@@ -6,4 +6,15 @@
     height: 100%;
     object-fit: contain;
   }
+
+  &.accent > img {
+    border: 6px solid $purple-dark;
+    border-radius: 50%;
+  }
+
+  &.highlight > img {
+    border: 6px solid $lightest;
+    border-radius: 50%;
+  }
+
 }
