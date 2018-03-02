@@ -71,6 +71,9 @@ class FeedPage extends React.Component {
               {users[focusedBallotId].handle}
             </h1>
           </div>
+          <p className="full-name">
+            {users[focusedBallotId].fullName}
+          </p>
           <div className="page__content">
             <BallotDisplay
               ballot={ballots[focusedBallotId]}

@@ -1,3 +1,8 @@
 .ballot-display {
   color: $orange-light;
+
+  .highlight {
+    color: $lightest;
+    text-decoration: underline;
+  }
 }
