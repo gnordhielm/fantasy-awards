@@ -2,6 +2,7 @@ import { cloneDeep, every } from 'lodash'
 import {
   bigOneEveryWinPoints,
   bigOnePicturePoints,
+  basicCategoryPoints,
   basicCategories,
   minExtras
 } from 'config/settings'
@@ -188,6 +189,16 @@ class Ballot2018 {
     })
 
     // basics
+    for (let category in this.basics)
+    {
+      const field = this.basics[category]
+      const result = nominees[category].findIndex(nominee => {
+        return nominee.film === results[category]
+      })
+
+      if (~result)
+        total += Math.round(field[result] * basicCategoryPoints)
+    }
 
     return total
   }
