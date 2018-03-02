@@ -94,7 +94,7 @@ const mapState = state => ({
   ballots: state.ballot,
   users: state.user,
   uid: state.auth.uid,
-  results: state.results
+  results: state.result
 })
 
 export default connect(mapState)(FeedPage)

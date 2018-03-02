@@ -1,5 +1,5 @@
 
-{
+export default {
   "WW_II": {
     "points": 200,
     "description": "A World War II film wins best picture (\"Darkest Hour\" or \"Dunkirk\")."

@@ -1,5 +1,7 @@
 import { cloneDeep, every } from 'lodash'
 import {
+  bigOneEveryWinPoints,
+  bigOnePicturePoints,
   basicCategories,
   minExtras
 } from 'config/settings'
@@ -160,8 +162,29 @@ class Ballot2018 {
       }
   }
 
-  score = results => {
-    return 0
+  score = (results={}) => {
+    let total = 0
+
+    // big one
+    if (this.bigOne.pointsOn === 'PICTURE')
+    {
+      total += results["PICTURE"] === this.bigOne.film ?
+        bigOnePicturePoints : 0
+    }
+    else
+    {
+      Object.keys(results).forEach(key => {
+        total += results[key] === this.bigOne.film ?
+          bigOneEveryWinPoints : 0
+      })
+
+    }
+
+    // extras
+
+    // basics
+
+    return total
   }
 
 }
