@@ -40,7 +40,7 @@ class FeedPage extends React.Component {
         return a.handle.toLowerCase() < b.handle.toLowerCase() ? -1 : 1
       })
 
-    const highestScore = resolvedBallots[0].score
+    const highestScore = resolvedBallots.length ? resolvedBallots[0].score : 0
 
     let body = (
       <div className="page__content">
