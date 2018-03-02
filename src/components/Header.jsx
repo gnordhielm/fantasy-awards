@@ -5,6 +5,11 @@ import { startLogout } from 'actions/auth'
 import { personalLink, oscars2018Time } from 'settings'
 import Countdown from 'components/Countdown'
 
+const plainMessage = message => (
+  <div>
+    {message}
+  </div>
+)
 const ballotReminder = () => (
   <div>
     <span>Please </span>
@@ -68,15 +73,20 @@ class Header extends React.Component {
       </header>
     )
 
-    const { live, hasBallot } = this.props
+    const { live, hasBallot, message } = this.props
+
+    let text
+    if (message)
+      text = plainMessage(message)
+    else if (!hasBallot)
+      text = ballotReminder()
+    else
+      text = countdownLeftHeader()
 
     return (
       <header className="header">
         <div className="header__left">
-          {hasBallot ?
-            live ? liveLeftHeader() : countdownLeftHeader() :
-            ballotReminder()
-          }
+          {text}
         </div>
         <div className="header__right">
           <NavLink
@@ -109,7 +119,8 @@ class Header extends React.Component {
 
 const mapState = state => ({
   live: false, // TO DO - add a firebase listener for this
-  hasBallot: !!state.ballot[state.auth.uid]
+  hasBallot: !!state.ballot[state.auth.uid],
+  message: state.objectiveState.message
 })
 
 const mapDispatch = dispatch => ({

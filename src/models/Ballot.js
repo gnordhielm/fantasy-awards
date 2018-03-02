@@ -181,6 +181,11 @@ class Ballot2018 {
     }
 
     // extras
+    Object.keys(extras).forEach(key => {
+      const extra = extras[key]
+      total += this.extras[key] && extra.score(results) ?
+        extra.points : 0
+    })
 
     // basics
 
