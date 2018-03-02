@@ -44,12 +44,14 @@ class Countdown extends React.Component {
 
     if (hasDays)
     {
-      time = Math.floor(secondsRemaining/86400)
+      time = Math.floor(secondsRemaining/8640)
+      time = (Math.round(time)/10).toFixed(1)
       unit = time === 1 ? 'day' : 'days'
     }
     else if (hasHours)
     {
-      time = Math.floor(secondsRemaining/3600)
+      time = Math.floor(secondsRemaining/360)
+      time = (Math.round(time)/10).toFixed(1)
       unit = time === 1 ? 'hour' : 'hours'
     }
     else if (hasMinutes)

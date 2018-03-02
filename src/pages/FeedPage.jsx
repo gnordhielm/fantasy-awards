@@ -10,7 +10,6 @@ class FeedPage extends React.Component {
   }
 
   handleBallotClick = id => {
-    console.log('handleBallotClick');
 
     if (id === this.props.uid)
       this.props.history.push('/home')
@@ -27,6 +26,7 @@ class FeedPage extends React.Component {
     const { focusedBallotId } = this.state
     const { users, ballots, results, uid } = this.props
 
+
     const resolvedBallots = Object.keys(ballots)
       .map(key => ({
         ballot: ballots[key],
@@ -42,40 +42,46 @@ class FeedPage extends React.Component {
 
     const highestScore = resolvedBallots[0].score
 
-    return (
-      <div className={`feed-page page ${focusedBallotId ? 'no-scroll': ''}`}>
-        {focusedBallotId &&
-          <div className="ballot-display-container">
-            <div className="title">
-              <h1 onClick={this.clearFocusedBallot}>
-                <i className="icon remove"></i>
-              </h1>
-              <h1>
-                {users[focusedBallotId].handle}
-              </h1>
-            </div>
-            <div className="page__content">
-              <BallotDisplay
-                ballot={ballots[focusedBallotId]}
-              />
-            </div>
+    let body = (
+      <div className="page__content">
+        {resolvedBallots.map(({ ballot, score, handle, key }, idx) => (
+          <FeedBallot
+            align={idx % 2 ? 'RIGHT' : 'LEFT'}
+            onClick={this.handleBallotClick}
+            key={key}
+            id={key}
+            handle={handle}
+            film={ballot.bigOne.film}
+            isCurrentUser={uid === key}
+            isWinner={highestScore && highestScore === score}
+            score={score}
+          />
+        ))}
+      </div>
+    )
+
+    if (focusedBallotId)
+      body = (
+        <div className="ballot-display-container">
+          <div className="title">
+            <h1 onClick={this.clearFocusedBallot}>
+              <i className="icon remove"></i>
+            </h1>
+            <h1>
+              {users[focusedBallotId].handle}
+            </h1>
           </div>
-        }
-        <div className="page__content">
-          {resolvedBallots.map(({ ballot, score, handle, key }, idx) => (
-            <FeedBallot
-              align={idx % 2 ? 'RIGHT' : 'LEFT'}
-              onClick={this.handleBallotClick}
-              key={key}
-              id={key}
-              handle={handle}
-              film={ballot.bigOne.film}
-              isCurrentUser={uid === key}
-              isWinner={highestScore && highestScore === score}
-              score={score}
+          <div className="page__content">
+            <BallotDisplay
+              ballot={ballots[focusedBallotId]}
             />
-          ))}
+          </div>
         </div>
+      )
+
+    return (
+      <div className={`feed-page page`}>
+        {body}
       </div>
     )
   }

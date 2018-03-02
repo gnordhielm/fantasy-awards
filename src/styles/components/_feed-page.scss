@@ -3,12 +3,9 @@
   padding: $l-size 0 ($l-size * 2);
   position: relative;
 
-  &.no-scroll {
-    overflow: hidden!important;
-  }
-
   .ballot-display-container {
     position: absolute;
+    z-index: 1;
     top: 0;
     height: 100%;
     width: 100%;
