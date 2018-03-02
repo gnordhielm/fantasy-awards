@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { startLogout } from 'actions/auth'
 import { personalLink, oscars2018Time } from 'settings'
 import Countdown from 'components/Countdown'
+import pkg from '../../package'
 
 const plainMessage = message => (
   <div>
