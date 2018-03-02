@@ -10,6 +10,7 @@ class FeedPage extends React.Component {
   }
 
   handleBallotClick = id => {
+    console.log('handleBallotClick');
 
     if (id === this.props.uid)
       this.props.history.push('/home')
@@ -24,38 +25,54 @@ class FeedPage extends React.Component {
   render() {
 
     const { focusedBallotId } = this.state
+    const { users, ballots, results, uid } = this.props
 
-    if (focusedBallotId)
-      return (
-        <div className="page feed-page with-ballot">
-          <div className="title">
-            <h1 onClick={this.clearFocusedBallot}>
-              <i className="icon remove"></i>
-            </h1>
-            <h1>
-              {this.props.users[focusedBallotId].handle}
-            </h1>
-          </div>
-          <div className="page__content">
-            <BallotDisplay
-              ballot={this.props.ballots[focusedBallotId]}
-            />
-          </div>
-        </div>
-      )
+    const resolvedBallots = Object.keys(ballots)
+      .map(key => ({
+        ballot: ballots[key],
+        score: ballots[key].score(results),
+        handle: users[key].handle,
+        key
+      }))
+      .sort((a,b) => {
+        if (b.score !== a.score)
+          return b.score - a.score
+        return a.handle.toLowerCase() < b.handle.toLowerCase() ? -1 : 1
+      })
+
+    const highestScore = resolvedBallots[0].score
 
     return (
-      <div className="feed-page page">
+      <div className={`feed-page page ${focusedBallotId ? 'no-scroll': ''}`}>
+        {focusedBallotId &&
+          <div className="ballot-display-container">
+            <div className="title">
+              <h1 onClick={this.clearFocusedBallot}>
+                <i className="icon remove"></i>
+              </h1>
+              <h1>
+                {users[focusedBallotId].handle}
+              </h1>
+            </div>
+            <div className="page__content">
+              <BallotDisplay
+                ballot={ballots[focusedBallotId]}
+              />
+            </div>
+          </div>
+        }
         <div className="page__content">
-          {Object.keys(this.props.ballots).map((key, idx) => (
+          {resolvedBallots.map(({ ballot, score, handle, key }, idx) => (
             <FeedBallot
               align={idx % 2 ? 'RIGHT' : 'LEFT'}
               onClick={this.handleBallotClick}
               key={key}
               id={key}
-              user={this.props.users[key]}
-              ballot={this.props.ballots[key]}
-              isCurrentUser={this.props.uid === key}
+              handle={handle}
+              film={ballot.bigOne.film}
+              isCurrentUser={uid === key}
+              isWinner={highestScore && highestScore === score}
+              score={score}
             />
           ))}
         </div>
@@ -67,7 +84,8 @@ class FeedPage extends React.Component {
 const mapState = state => ({
   ballots: state.ballot,
   users: state.user,
-  uid: state.auth.uid
+  uid: state.auth.uid,
+  results: state.results
 })
 
 export default connect(mapState)(FeedPage)

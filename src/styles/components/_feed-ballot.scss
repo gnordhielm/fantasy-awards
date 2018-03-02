@@ -13,11 +13,11 @@
   margin-bottom: -$l-size;
 
   &.right {
-    margin-right: -$s-size;
+    margin-right: -9vw;
   }
 
   &.left {
-    margin-left: -$s-size;
+    margin-left: -9vw;
   }
 
 
@@ -26,4 +26,14 @@
     font-weight: 400;
     color: $lightest;
   }
+
+  p.score {
+    color: $purple-dark;
+    margin-top: 0;
+  }
+
+  &.winner p.score {
+    color: $lightest;
+  }
+
 }

@@ -1,8 +1,17 @@
 .feed-page {
   background: $purple;
   padding: $l-size 0 ($l-size * 2);
+  position: relative;
 
-  &.with-ballot {
+  &.no-scroll {
+    overflow: hidden!important;
+  }
+
+  .ballot-display-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
     background: $orange;
     padding: $s-size;
   }

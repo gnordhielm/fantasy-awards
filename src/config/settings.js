@@ -31,14 +31,14 @@ export const basicCategories = [
 export const minExtras = 3
 
 export const filmIconLookup = {
-  "CALL_ME_BY_YOUR_NAME": "call_me_by.svg",
-  "DARKEST_HOUR": "darkest_hour.svg",
-  "DUNKIRK": "dunkirk.svg",
-  "GET_OUT": "get_out.svg",
-  "LADY_BIRD": "lady_bird.svg",
-  "PHANTOM_THREAD": "phantom_thread.svg",
-  "THREE_BILLBOARDS_OUTSIDE_EBBING,_MISSOURI": "billboards.svg",
-  "THE_SHAPE_OF_WATER": "shape_of_water.svg",
-  "THE_POST": "the_post.svg",
-  "FALLBACK": "fallback.svg",
+  "CALL_ME_BY_YOUR_NAME": "call_me_by",
+  "DARKEST_HOUR": "darkest_hour",
+  "DUNKIRK": "dunkirk",
+  "GET_OUT": "get_out",
+  "LADY_BIRD": "lady_bird",
+  "PHANTOM_THREAD": "phantom_thread",
+  "THREE_BILLBOARDS_OUTSIDE_EBBING,_MISSOURI": "billboards",
+  "THE_SHAPE_OF_WATER": "shape_of_water",
+  "THE_POST": "the_post",
+  "FALLBACK": "fallback",
 }

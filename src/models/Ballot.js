@@ -160,6 +160,10 @@ class Ballot2018 {
       }
   }
 
+  score = results => {
+    return 0
+  }
+
 }
 
 export default Ballot2018

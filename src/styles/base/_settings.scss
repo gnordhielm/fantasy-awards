@@ -3,6 +3,10 @@
 $lightest: #fff;
 $darkest: #222;
 
+$teal-dark: #3f6b69;
+$teal-base: #5d9388;$teal: $teal-base;
+$teal-light: #a8ccc9;
+
 $red-dark: #6a1b14;
 $red: #9a2b22;
 $red-light: #f89b8c;
@@ -36,7 +40,6 @@ $orange-dark-1: darken(desaturate($orange-base, 0.21), 2.94);
 $orange-light-1: lighten(saturate(adjust-hue($orange-base, 2), 27.96), 12.75);
 $orange-light-2: lighten(saturate(adjust-hue($orange-base, 3), 27.10), 37.06);
 
-$teal-base: #5d9388;
 $teal-dark-3: #3a6c62;
 $teal-dark-2: #3a6c62;
 $teal-dark-1: #3a6c62;
