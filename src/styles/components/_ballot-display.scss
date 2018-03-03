@@ -1,3 +1,18 @@
+.ballot-display-container {
+  background: $orange;
+  padding: $s-size;
+
+  .title {
+    padding: 0;
+  }
+
+  p.full-name {
+    text-align: right;
+    color: $orange-dark;
+  }
+
+}
+
 .ballot-display {
   color: $orange-light;
 

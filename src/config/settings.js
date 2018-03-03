@@ -1,6 +1,10 @@
 import { nominationsByFilm } from 'config/util'
 import nominees from 'config/nominees'
 
+export const navbarTopHeight = '4.8rem'
+export const navbarBottomHeight = '6rem'
+export const desktopBreakpointPx = 720
+
 export const personalLink = 'https://github.com/gnordhielm'
 // export const personalLink = 'http://www.gusnordhielm.com/'
 export const oscars2018Time = "2018/03/04 17:30:00 UTC"

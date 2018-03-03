@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FeedBallot from 'components/FeedBallot'
 import BallotDisplay from 'components/BallotDisplay'
+import ModalPage from 'pages/ModalPage'
 
 class FeedPage extends React.Component {
 
@@ -42,26 +43,9 @@ class FeedPage extends React.Component {
 
     const highestScore = resolvedBallots.length ? resolvedBallots[0].score : 0
 
-    let body = (
-      <div className="page__content">
-        {resolvedBallots.map(({ ballot, score, handle, key }, idx) => (
-          <FeedBallot
-            align={idx % 2 ? 'RIGHT' : 'LEFT'}
-            onClick={this.handleBallotClick}
-            key={key}
-            id={key}
-            handle={handle}
-            film={ballot.bigOne.film}
-            isCurrentUser={uid === key}
-            isWinner={highestScore && highestScore === score}
-            score={score}
-          />
-        ))}
-      </div>
-    )
-
+    let modalContent
     if (focusedBallotId)
-      body = (
+      modalContent = (
         <div className="ballot-display-container">
           <div className="title">
             <h1 onClick={this.clearFocusedBallot}>
@@ -84,7 +68,28 @@ class FeedPage extends React.Component {
 
     return (
       <div className={`feed-page page`}>
-        {body}
+        <ModalPage
+          isOpen={!!focusedBallotId}
+          onRequestClose={this.clearFocusedBallot}
+        >
+          {modalContent}
+        </ModalPage>
+
+        <div className="page__content">
+          {resolvedBallots.map(({ ballot, score, handle, key }, idx) => (
+            <FeedBallot
+              align={idx % 2 ? 'RIGHT' : 'LEFT'}
+              onClick={this.handleBallotClick}
+              key={key}
+              id={key}
+              handle={handle}
+              film={ballot.bigOne.film}
+              isCurrentUser={uid === key}
+              isWinner={highestScore && highestScore === score}
+              score={score}
+            />
+          ))}
+        </div>
       </div>
     )
   }

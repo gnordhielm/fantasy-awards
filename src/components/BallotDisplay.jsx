@@ -4,7 +4,6 @@ import extras from 'config/extras'
 import nominees from 'config/nominees'
 import { basicCategoryPoints } from 'config/settings'
 
-
 const BallotDisplay = ({ ballot }) => (
   <div className="ballot-display">
     <h2>The Big One</h2>

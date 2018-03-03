@@ -3,22 +3,4 @@
   padding: $l-size 0 ($l-size * 2);
   position: relative;
 
-  .ballot-display-container {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    background: $orange;
-    padding: $s-size;
-
-    .title {
-      padding: 0;
-    }
-
-    p.full-name {
-      text-align: right;
-      color: $orange-dark;
-    }
-
-  }
-
 }
