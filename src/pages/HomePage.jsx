@@ -6,13 +6,16 @@ import { capsToDisplay } from 'config/util'
 import extras from 'config/extras'
 import nominees from 'config/nominees'
 
-const HomePage = ({ ballot, handle }) => {
+const HomePage = ({ ballot, handle, results }) => {
 
   return (
     <div className="page home-page">
       <div className="title">
         <h1>{handle}</h1>
       </div>
+      {!!ballot &&
+        <div className="points">{ballot.score(results)} points</div>
+      }
       <div className="page__content">
         {!!ballot ?
           <div>
@@ -76,7 +79,8 @@ const HomePage = ({ ballot, handle }) => {
 
 const mapState = state => ({
   ballot: state.ballot[state.auth.uid],
-  handle: state.auth.handle
+  handle: state.auth.handle,
+  results: state.result
 })
 
 export default connect(mapState)(HomePage)

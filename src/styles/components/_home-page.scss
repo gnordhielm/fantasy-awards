@@ -11,13 +11,21 @@
     margin: 0;
   }
 
+  .points {
+    text-align: center;
+    padding: $xs-size;
+    background: $lightest;
+    color: $purple;
+  }
+
   .extra, .basic {
     margin-bottom: $m-size;
   }
 
   .basic-title {
     margin-bottom: $s-size;
-    color: $purple-dark;
+    // color: $purple-dark;
+    text-decoration: underline;
     font-weight: 700;
   }
 
