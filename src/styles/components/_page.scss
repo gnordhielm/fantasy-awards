@@ -15,7 +15,8 @@
   display: flex;
   flex-flow: column nowrap;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   // justify-content: space-between;
   flex: 1;
 
