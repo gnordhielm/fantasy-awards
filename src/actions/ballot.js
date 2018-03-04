@@ -10,6 +10,9 @@ export const set = ballot => (dispatch, getState) => {
 
   const data = ballot.encode()
   const { uid } = getState().auth
+  const { broadcast } = getState().objectiveState
+
+  if (broadcast !== 'PRE') return
 
   db.ref(`ballots/${uid}`)
     .set(data)

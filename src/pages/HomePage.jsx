@@ -6,7 +6,9 @@ import { capsToDisplay } from 'config/util'
 import extras from 'config/extras'
 import nominees from 'config/nominees'
 
-const HomePage = ({ ballot, handle, results }) => {
+const HomePage = ({
+  ballot, handle, results, allowCreateBallot
+}) => {
 
   return (
     <div className="page home-page">
@@ -64,13 +66,14 @@ const HomePage = ({ ballot, handle, results }) => {
                 ))}
 
             </div> :
+            allowCreateBallot ?
             <Link
               className="button"
               to="/new-ballot"
             >
               <i className="icon plus"></i>&ensp;
               Create Ballot
-            </Link>
+            </Link> : <div>Too late to create a ballot!</div>
             }
       </div>
     </div>
@@ -80,7 +83,8 @@ const HomePage = ({ ballot, handle, results }) => {
 const mapState = state => ({
   ballot: state.ballot[state.auth.uid],
   handle: state.auth.handle,
-  results: state.result
+  results: state.result,
+  allowCreateBallot: state.objectiveState.broadcast === 'PRE'
 })
 
 export default connect(mapState)(HomePage)

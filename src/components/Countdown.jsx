@@ -35,6 +35,14 @@ class Countdown extends React.Component {
 
     const { secondsRemaining } = this.state
 
+    if (secondsRemaining <= 0)
+    {
+      // clearInterval(this.interval)
+      return (
+        <div>Oscars are live!</div>
+      )
+    }
+
     const hasDays = secondsRemaining >= 86400
     const hasHours = secondsRemaining >= 3600
     const hasMinutes = secondsRemaining >= 60
