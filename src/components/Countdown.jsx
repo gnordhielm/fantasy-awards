@@ -7,12 +7,13 @@ class Countdown extends React.Component {
   }
 
   getSecondsRemaining = () => {
+
     const target = new Date(this.props.target)
     const now = new Date
-    const withOffset = now.getTimezoneOffset() * 60
     const normalized = Math.floor((target - now) / 1e3)
+    const withOffset = normalized + (now.getTimezoneOffset() * 60)
 
-    return normalized > 0 ? normalized + withOffset : 0
+    return withOffset > 0 ? withOffset : 0
   }
 
   componentDidMount() {
@@ -39,7 +40,7 @@ class Countdown extends React.Component {
     {
       // clearInterval(this.interval)
       return (
-        <div>Oscars are live!</div>
+        <div>The Oscars are live!</div>
       )
     }
 
