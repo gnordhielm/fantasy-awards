@@ -7,7 +7,7 @@ export const desktopBreakpointPx = 720
 
 export const personalLink = 'https://github.com/gnordhielm'
 // export const personalLink = 'http://www.gusnordhielm.com/'
-export const oscars2018Time = "2018/03/04 17:30:00 UTC"
+export const oscars2018Time = "2018/03/04 17:00:00 UTC"
 
 export const maxHandleLength = 30
 
