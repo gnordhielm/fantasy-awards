@@ -18,6 +18,14 @@
     color: $purple;
   }
 
+  .leagues {
+    display: flex;
+    flex: 0 0 auto;
+    min-height: $l-size;
+    color: transparentize($purple-dark, 0.3);
+    margin: 0 0 $xs-size;
+  }
+
   .extra, .basic {
     margin-bottom: $m-size;
   }

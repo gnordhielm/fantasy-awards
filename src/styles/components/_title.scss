@@ -1,7 +1,7 @@
 .title {
   display: flex;
   justify-content: space-between;
-  padding: $s-size $m-size;
+  padding: $s-size $m-size 0;
   align-items: baseline;
   flex: 0 0 auto;
 }

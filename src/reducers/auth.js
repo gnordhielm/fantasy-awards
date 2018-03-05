@@ -2,7 +2,8 @@
 const initialState = {
   uid: null,
   fullName: '',
-  handle: ''
+  handle: '',
+  leagues: []
 }
 
 export default (state=initialState, action) => {

@@ -15,10 +15,20 @@ const HomePage = ({
       <div className="title">
         <h1>{handle}</h1>
       </div>
-      {!!ballot &&
-        <div className="points">{ballot.score(results)} points</div>
-      }
       <div className="page__content">
+        {!!ballot &&
+          true ?
+          <div className="leagues">
+            #irKat #blyBrigade #9thStreet &ensp;
+            <i className="icon plus"></i>
+          </div> :
+          <div className="leagues">
+            Join or create a league.
+          </div>
+        }
+        {!!ballot &&
+          <div className="points">{ballot.score(results)} points</div>
+        }
         {!!ballot ?
           <div>
             <h2>The Big One</h2>
